@@ -884,7 +884,7 @@
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00543D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><path d="M12 10a6 6 0 0 0-6-6H3v3a6 6 0 0 0 6 6h3"></path><path d="M12 14a6 6 0 0 1 6-6h3v3a6 6 0 0 1-6 6h-3"></path><line x1="12" y1="10" x2="12" y2="22"></line></svg>
                     Aboitiz Foods &mdash; Agri B Group
                 </h1>
-                <p id="headerSubtitle">Executive Dashboard & Financial Summary 2027 (Updated 27-Aug-2026)</p>
+                <p id="headerSubtitle">Executive Dashboard & Financial Summary 2027 (Updated 05-Oct-2026)</p>
             </div>
             <div class="header-actions">
                 <!-- Tab Switcher -->
@@ -3942,13 +3942,45 @@ var presChartInstances = {};
             return '$' + Math.round(abs);
         }
 
-                // Page Switcher
-        function switchPage(page) {
-    if (page === 'pres') {
-        if (typeof initPresentationCharts === 'function') {
-            setTimeout(initPresentationCharts, 100);
+                // Tự động nhận diện và định dạng ngày cập nhật dữ liệu web
+        window.DATA_UPDATED_DATE = window.DATA_UPDATED_DATE || "";
+
+        function getUpdateDateString() {
+            if (window.DATA_UPDATED_DATE && window.DATA_UPDATED_DATE.trim() !== "") {
+                return window.DATA_UPDATED_DATE.trim();
+            }
+            try {
+                if (document.lastModified) {
+                    const d = new Date(document.lastModified);
+                    if (!isNaN(d.getTime()) && d.getFullYear() >= 2024) {
+                        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                        const day = String(d.getDate()).padStart(2, '0');
+                        return `${day}-${months[d.getMonth()]}-${d.getFullYear()}`;
+                    }
+                }
+            } catch(e) {}
+            const now = new Date();
+            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            return `${String(now.getDate()).padStart(2, '0')}-${months[now.getMonth()]}-${now.getFullYear()}`;
         }
-    }
+
+        function syncHeaderSubtitle() {
+            const subEl = document.getElementById('headerSubtitle');
+            if (subEl) {
+                subEl.innerText = 'Executive Dashboard & Financial Summary 2027 (Updated ' + getUpdateDateString() + ')';
+            }
+        }
+
+        // Thực thi đồng bộ ngày ngay khi load script
+        syncHeaderSubtitle();
+
+        // Page Switcher
+        function switchPage(page) {
+            if (page === 'pres') {
+                if (typeof initPresentationCharts === 'function') {
+                    setTimeout(initPresentationCharts, 100);
+                }
+            }
             currentPage = page;
             const tabExec = document.getElementById('tabExec');
             const tabBP = document.getElementById('tabBP');
@@ -3971,7 +4003,7 @@ var presChartInstances = {};
                 if (tabExec) tabExec.classList.add('active');
                 if (pageExec) pageExec.classList.remove('hidden');
                 if (navSection) navSection.classList.remove('hidden');
-                document.getElementById('headerSubtitle').innerText = 'Executive Dashboard & Financial Summary 2027 (Updated 27-Aug-2026)';
+                syncHeaderSubtitle();
             } else if (page === 'bp') {
                 if (tabBP) tabBP.classList.add('active');
                 if (pageBP) pageBP.classList.remove('hidden');
@@ -6045,6 +6077,9 @@ function initPresentationCharts() {
 }
 
 window.addEventListener('DOMContentLoaded', function() {
+    if (typeof syncHeaderSubtitle === 'function') {
+        syncHeaderSubtitle();
+    }
     if (typeof filterCountry === 'function') {
         filterCountry('ALL');
     }
