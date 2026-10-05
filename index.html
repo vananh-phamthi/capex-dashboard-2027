@@ -6300,6 +6300,49 @@ window.addEventListener('keydown', function(e) {
     }
 });
 </script>
+
+<!-- Security Gate Overlay for Standalone / GitHub Pages -->
+<div id="gateLockOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%); z-index:9999999; justify-content:center; align-items:center; font-family:'Segoe UI', system-ui, sans-serif;">
+    <div style="max-width:500px; width:90%; padding:2.5rem; background:#fff; border-radius:16px; box-shadow:0 10px 30px rgba(0,84,61,0.1); border-top:5px solid #00543D; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:0.5rem;">ðŸ”’</div>
+        <h2 style="color:#00543D; margin:0 0 0.5rem 0; font-size:1.45rem;">Aboitiz Foods â€” Agri B Group</h2>
+        <p style="color:#4b5563; font-size:0.95rem; margin:0 0 1.2rem 0;">CAPEX Budget 2027 & Business Plan (2027â€“2031)<br><strong>BÃ¡o cÃ¡o Ná»™i bá»™ â€” Giá»›i háº¡n truy cáº­p</strong></p>
+        <div style="background:#f1f5f9; border:1px dashed #cbd5e1; border-radius:8px; padding:0.85rem; font-size:0.88rem; color:#64748b; text-align:left; margin-bottom:1.5rem; line-height:1.45;">
+            â„¹ï¸ <strong>ThÃ´ng bÃ¡o báº£o máº­t:</strong> Dá»¯ liá»‡u nÃ y chá»‰ lÆ°u hÃ nh ná»™i bá»™. Náº¿u chÆ°a cÃ³ quyá»n truy cáº­p, vui lÃ²ng liÃªn há»‡ <strong>Quáº£n trá»‹ viÃªn (NgÆ°á»i táº¡o bÃ¡o cÃ¡o)</strong> Ä‘á»ƒ Ä‘Æ°á»£c cáº¥p mÃ£ phÃª duyá»‡t.
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.8rem;">
+            <input id="gatePassInput" type="password" placeholder="Nháº­p máº­t mÃ£ Ä‘Æ°á»£c cáº¥p..." style="padding:0.75rem 1rem; border:1.5px solid #cbd5e1; border-radius:8px; font-size:1rem; outline:none;" onkeydown="if(event.key==='Enter')checkGatePasscode()">
+            <button onclick="checkGatePasscode()" style="padding:0.75rem; background:#00543D; color:#fff; border:none; border-radius:8px; font-size:1rem; font-weight:600; cursor:pointer;">ðŸ”“ Má»Ÿ BÃ¡o CÃ¡o</button>
+            <div id="gatePassError" style="display:none; color:#dc2626; font-size:0.85rem; font-weight:600;">âŒ Máº­t mÃ£ khÃ´ng chÃ­nh xÃ¡c. Vui lÃ²ng liÃªn há»‡ Quáº£n trá»‹ viÃªn.</div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    const SECRET = 'capex2027';
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get('key') || '';
+    if (key.toLowerCase() === SECRET.toLowerCase() || sessionStorage.getItem('capex_auth') === 'granted') {
+        sessionStorage.setItem('capex_auth', 'granted');
+        return;
+    }
+    if (window.self !== window.top) return;
+    const overlay = document.getElementById('gateLockOverlay');
+    if (overlay) overlay.style.display = 'flex';
+})();
+function checkGatePasscode() {
+    const inp = document.getElementById('gatePassInput');
+    const err = document.getElementById('gatePassError');
+    if (inp && inp.value.trim().toLowerCase() === 'capex2027') {
+        sessionStorage.setItem('capex_auth', 'granted');
+        const overlay = document.getElementById('gateLockOverlay');
+        if (overlay) overlay.style.display = 'none';
+    } else if (err) {
+        err.style.display = 'block';
+    }
+}
+</script>
 </body>
 </html>
 
