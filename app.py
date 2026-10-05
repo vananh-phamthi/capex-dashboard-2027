@@ -12,9 +12,22 @@ st.set_page_config(
 
 SECRET_KEY = "capex2027"
 
-# Check query parameters for secret VIP key
-params = st.query_params
-url_key = params.get("key", "").strip()
+# Safe query parameters retrieval for all Streamlit versions
+url_key = ""
+try:
+    if hasattr(st, "query_params"):
+        raw_key = st.query_params.get("key", "")
+        if isinstance(raw_key, list):
+            url_key = raw_key[0] if raw_key else ""
+        else:
+            url_key = str(raw_key)
+    elif hasattr(st, "experimental_get_query_params"):
+        raw_key = st.experimental_get_query_params().get("key", [""])
+        url_key = raw_key[0] if isinstance(raw_key, list) else str(raw_key)
+except Exception:
+    url_key = ""
+
+url_key = url_key.strip()
 
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
