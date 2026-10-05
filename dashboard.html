@@ -896,7 +896,7 @@
                         <i class="fa-solid fa-chart-line"></i> Business Plan (2027 - 2031)
                     </button>
                     <button id="tabPresentation" class="page-tab-btn" onclick="switchPage('presentation')">
-                        <i class="fa-solid fa-presentation-screen"></i> Presentation Deck (52 Slides)
+                        <i class="fa-solid fa-presentation-screen"></i> Presentation Deck (51 Slides)
                     </button>
                 </div>
                 <button class="btn-action btn-pptx-export" onclick="openPptxModal()" title="Export Presentation to PowerPoint (.pptx)">
@@ -3932,7 +3932,7 @@ var presChartInstances = {};
                 if (pagePres) pagePres.classList.remove('hidden');
                 if (navSection) navSection.classList.add('hidden'); // Hide filter bar for presentation focus
                 const subEl = document.getElementById('headerSubtitle');
-                if (subEl) subEl.innerHTML = 'Aboitiz Foods &bull; Executive Presentation Deck (2027 - 2031) - 52 Slides Detailed Corporate Presentation &amp; Governance';
+                if (subEl) subEl.innerHTML = 'Aboitiz Foods &bull; Executive Presentation Deck (2027 - 2031) - 51 Slides Detailed Corporate Presentation &amp; Governance';
                 
                 if (typeof initPresentationCharts === 'function') {
                     initPresentationCharts();
@@ -5523,6 +5523,7 @@ function initPresentationCharts() {
                 }
             },
             plugins: [presWhitePieLabelPlugin]
+        });
     }
 
     // COUNTRY LEVEL CHART FACTORY (ALL DUAL CHARTS)
