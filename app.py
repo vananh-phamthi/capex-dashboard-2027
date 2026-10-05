@@ -10,16 +10,24 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Hide Streamlit chrome so the dashboard fills the page
+# Optimize full screen layout while preserving Streamlit manage status if needed
 st.markdown(
     """
     <style>
-        #MainMenu, header, footer {visibility: hidden;}
-        .block-container {padding: 0.5rem 0.5rem 0 0.5rem; max-width: 100%;}
+        #MainMenu {visibility: hidden;}
+        .block-container {padding: 0.2rem 0.5rem 0 0.5rem; max-width: 100%;}
     </style>
     """,
     unsafe_allow_html=True,
 )
 
-html = (Path(__file__).parent / "dashboard.html").read_text(encoding="utf-8")
-components.html(html, height=2400, scrolling=True)
+@st.cache_data
+def load_html():
+    p = Path(__file__).parent / "dashboard.html"
+    return p.read_text(encoding="utf-8")
+
+try:
+    html_content = load_html()
+    components.html(html_content, height=2600, scrolling=True)
+except Exception as e:
+    st.error(f"Error loading dashboard: {e}")
