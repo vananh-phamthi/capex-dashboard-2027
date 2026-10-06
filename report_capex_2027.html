@@ -1,0 +1,2933 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aboitiz Foods - Agri B Group CAPEX Budget 2027 Executive Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    <style>
+        
+        :root {
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            
+            --primary: #00543D;       /* Deep Aboitiz Green */
+            --primary-dark: #003828;
+            --primary-light: #007a59;
+            --accent-red: #c8102e;    /* Pilmico Red */
+            --accent-blue: #0284c7;
+            --accent-teal: #0d9488;
+            --accent-purple: #7c3aed;
+            --accent-amber: #d97706;
+
+            /* Deep Green Theme for Philippines Feed */
+            --ph-green-bg: #e6f4ea;
+            --ph-green-border: #ceead6;
+            --ph-green-accent: #00543D;
+            --ph-green-dark: #003828;
+            
+            --shadow-subtle: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --font-main: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Cascadia Code', monospace;
+        }
+
+        body, button, input, select, textarea, table, th, td, h1, h2, h3, h4, h5, h6, p, span, div, a, li, label {
+            font-family: var(--font-main);
+            font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+        }
+
+        .font-mono, .data-table td.text-right, .card-value, .card-foot, .badge-success, .badge-alert, .sub-badge, .kpi-val, .metric-val {
+            font-family: var(--font-mono);
+            font-feature-settings: 'tnum';
+        }
+
+        .fa, .fas, .fa-solid, .far, .fa-regular, .fab, .fa-brands {
+            font-family: "Font Awesome 6 Free" !important;
+            font-style: normal;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.5;
+            padding: 24px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .dashboard-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 22px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .header-title-area h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title-area p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* PAGE TAB SWITCHER */
+        .page-tab-container {
+            display: flex;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 4px;
+            gap: 4px;
+        }
+
+        .page-tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .page-tab-btn:hover {
+            color: var(--primary);
+        }
+
+        .page-tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 2px 6px rgba(0, 84, 61, 0.25);
+        }
+
+        .btn-action {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        /* TWO-TIER FILTER NAVIGATION */
+        .nav-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .nav-tier-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .nav-tier-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-tier-bottom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            overflow-x: auto;
+            padding: 2px 0;
+            scrollbar-width: thin;
+        }
+
+        .nav-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn-total {
+            background: #ffffff;
+            border: 1.5px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.92rem;
+            font-weight: 700;
+            padding: 10px 22px;
+            border-radius: 10px;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #f0fdf4;
+            transform: translateY(-1px);
+        }
+
+        .nav-btn.active {
+            background-color: var(--primary) !important;
+            color: white !important;
+            border-color: var(--primary) !important;
+            box-shadow: 0 3px 8px rgba(0, 84, 61, 0.25);
+        }
+
+        .nav-btn.active svg {
+            filter: brightness(0) invert(1);
+        }
+
+        /* GUIDELINES CARD */
+        .guidelines-card {
+            background: linear-gradient(135deg, #00543D 0%, #003828 100%);
+            color: white;
+            border-radius: 16px;
+            padding: 20px 28px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .guideline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .guideline-icon {
+            background: rgba(255, 255, 255, 0.15);
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .guideline-text h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: #f8fafc;
+        }
+
+        .guideline-text p {
+            font-size: 0.82rem;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        /* SCORECARDS GRID */
+        .scorecard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-red { background-color: #fee2e2; }
+        .icon-blue { background-color: #e0f2fe; }
+        .icon-teal { background-color: #ccfbf1; }
+        .icon-green { background-color: #dcfce7; }
+        .icon-amber { background-color: #fef3c7; }
+        .icon-purple { background-color: #ede9fe; }
+
+        .card-value {
+            font-size: 1.95rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            font-feature-settings: "tnum";
+        }
+
+        .card-foot {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-top: 1px dashed var(--border-color);
+            padding-top: 10px;
+            margin-top: 4px;
+        }
+
+        .badge-success {
+            background-color: #dcfce7;
+            color: #166534;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-alert {
+            background-color: #fee2e2;
+            color: #991b1b;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-warning {
+            background-color: #fef3c7;
+            color: #92400e;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .badge-info {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* CHART GRID LAYOUTS */
+        .chart-grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .chart-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .chart-header-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chart-header-title i {
+            color: var(--primary);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+
+        /* DATA TABLE STYLING */
+        .table-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .table-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+            max-width: 320px;
+            width: 100%;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 14px 10px 38px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.88rem;
+            color: var(--text-primary);
+            background-color: var(--bg-secondary);
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-box input:focus {
+            background-color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 84, 61, 0.1);
+        }
+
+        .data-table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.88rem;
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            color: var(--text-secondary);
+            font-weight: 700;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        .data-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .data-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: #f8fafc;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .font-mono {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .tag-country {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tag-ph { 
+            background: #e6f4ea; 
+            color: #00543D; 
+            border: 1px solid #ceead6;
+        }
+        .tag-vn { background: #dcfce7; color: #166534; }
+        .tag-my { background: #e0f2fe; color: #0369a1; }
+        .tag-id { background: #fef3c7; color: #92400e; }
+        .tag-cn { background: #ede9fe; color: #6b21a8; }
+
+        /* FOOTER BRANDING */
+        footer {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 20px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            box-shadow: var(--shadow-card);
+        }
+
+        .footer-tagline {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .sub-brands {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .brand-pill {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            background-color: var(--bg-secondary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @keyframes pulseUpdate {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.04); opacity: 1; color: #00543D; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .card-value.updated {
+            animation: pulseUpdate 0.35s ease-out;
+        }
+
+        .btn-pdf-export {
+            background: #ffffff;
+            border: 1.5px solid #c8102e;
+            color: #c8102e;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-pdf-export:hover {
+            background: #c8102e;
+            color: #ffffff;
+            border-color: #c8102e;
+            box-shadow: 0 3px 8px rgba(200, 16, 46, 0.25);
+            transform: translateY(-1px);
+        }
+
+        .btn-pdf-export:hover i {
+            color: #ffffff !important;
+        }
+
+        /* PDF MODAL */
+        .pdf-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .pdf-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .pdf-modal {
+            background: #ffffff;
+            border-radius: 16px;
+            width: 92%;
+            max-width: 580px;
+            padding: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+        }
+
+        .pdf-modal-overlay.active .pdf-modal {
+            transform: scale(1);
+        }
+
+        .pdf-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1.5px solid #e2e8f0;
+        }
+
+        .pdf-modal-header h3 {
+            font-size: 1.15rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+        }
+
+        .pdf-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .pdf-modal-close:hover {
+            color: #0f172a;
+            background: #f1f5f9;
+        }
+
+        .pdf-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .pdf-opt-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #e2e8f0;
+            background: #ffffff;
+            transition: all 0.2s ease;
+        }
+
+        .pdf-opt-card:hover {
+            border-color: #00543D;
+            box-shadow: 0 4px 12px rgba(0, 84, 61, 0.08);
+        }
+
+        .pdf-opt-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .pdf-opt-icon.red { background: #fee2e2; color: #c8102e; }
+        .pdf-opt-icon.green { background: #dcfce7; color: #00543D; }
+        .pdf-opt-icon.blue { background: #e0f2fe; color: #0284c7; }
+
+        .btn-pdf-act {
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: all 0.18s;
+            border: none;
+        }
+
+        .btn-pdf-act.red { background: #fee2e2; color: #c8102e; border: 1px solid #fecaca; }
+        .btn-pdf-act.red:hover { background: #c8102e; color: #fff; }
+
+        .btn-pdf-act.green { background: #00543D; color: #fff; }
+        .btn-pdf-act.green:hover { background: #003828; }
+
+        .btn-pdf-act.blue { background: #0284c7; color: #fff; }
+        .btn-pdf-act.blue:hover { background: #0369a1; }
+
+        .btn-pdf-act.outline { background: #f8fafc; color: #475569; border: 1px solid #cbd5e1; }
+        .btn-pdf-act.outline:hover { background: #e2e8f0; color: #0f172a; }
+
+        @media print {
+            body {
+                background: #ffffff !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                padding: 0 !important;
+            }
+            header, .nav-section, .table-controls, .btn-action, .pdf-modal-overlay {
+                display: none !important;
+            }
+            .dashboard-container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            .card, .chart-card, .table-card, .guidelines-card {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+                break-inside: avoid;
+            }
+            .chart-container {
+                height: 240px !important;
+            }
+        }
+    
+        @page {
+            size: 15in 10.5in;
+            margin: 12mm 15mm 12mm 15mm;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                background: #f8fafc !important;
+            }
+            .page-break {
+                page-break-after: always !important;
+                break-after: page !important;
+            }
+            .chart-card, .card, .table-card, .guidelines-card {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+            }
+        }
+        body {
+            font-family: Arial, sans-serif !important;
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 15px;
+        }
+        .pdf-page {
+            margin-bottom: 24px;
+        }
+        .chart-container {
+            height: 220px !important;
+            position: relative;
+        }
+        .scorecard-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr) !important;
+            gap: 12px !important;
+        }
+        .card {
+            padding: 12px 14px !important;
+        }
+        .card-value {
+            font-size: 1.5rem !important;
+            font-weight: 800;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 14px 0;
+            margin-bottom: 12px;
+            border-bottom: 2.5px solid #00543D;
+        }
+        .header h1 {
+            font-size: 1.45rem !important;
+            color: #00543D;
+            margin: 0;
+            font-weight: 800;
+        }
+        .subtitle {
+            font-size: 0.95rem;
+            color: #475569;
+            margin-top: 3px;
+        }
+        .pdf-badge {
+            background: #00543D;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .data-table th, .data-table td {
+            padding: 7px 10px !important;
+            font-size: 0.82rem !important;
+        }
+    </style>
+</head>
+<body>
+        <div class="pdf-page page-break" id="page_c_ALL">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><i class="fa-solid fa-earth-asia" style="color:#00543D; margin-right:6px;"></i> <strong>CONSOLIDATED AGRI B GROUP (ALL)</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+                    <div class="guidelines-card" style="margin-bottom: 16px;">
+                <div class="guideline-item">
+                    <div class="guideline-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="guideline-text">
+                        <h4>McPESO Plan Compliance (>25%)</h4>
+                        <p>Mandatory allocation toward efficiency, OEE improvements, and waste reduction.</p>
+                    </div>
+                </div>
+                <div class="guideline-item">
+                    <div class="guideline-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="guideline-text">
+                        <h4>HSSE Industrial Standards (~15%)</h4>
+                        <p>Environmental compliance, workforce safety, and statutory risk mitigations.</p>
+                    </div>
+                </div>
+                <div class="guideline-item">
+                    <div class="guideline-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="guideline-text">
+                        <h4>Capped M.O.B Envelope (.435M)</h4>
+                        <p>Regional production mill M.O.B strictly managed within envelope (-.12K under cap).</p>
+                    </div>
+                </div>
+            </div>
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_ALL">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>CONSOLIDATED AGRI B GROUP (ALL)</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_ALL">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_ALL">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_ALL">--</div>
+                <div class="card-foot" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
+                    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                        <span class="badge-success" id="kpiMOBShare_ALL">--</span>
+                        <span>Sustenance &amp; HSSE</span>
+                    </div>
+                    <div style="font-size: 0.72rem; color: #166534; font-weight: 700; background: #f0fdf4; padding: 2px 6px; border-radius: 4px; width: 100%; border: 1px solid #bbf7d0; box-sizing: border-box;">
+                        <i class="fa-solid fa-circle-check"></i> Excl. General (Prod only): $10.31M
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_ALL">--</div>
+                <div class="card-foot" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
+                    <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                        <span class="badge-success" id="kpiCapVariance_ALL">--</span>
+                        <span>Production Envelope</span>
+                    </div>
+                    <div style="font-size: 0.72rem; color: #166534; font-weight: 700; background: #f0fdf4; padding: 2px 6px; border-radius: 4px; width: 100%; border: 1px solid #bbf7d0; box-sizing: border-box;">
+                        <i class="fa-solid fa-circle-check"></i> Prod Mills: -$121.8K Under Cap ($10.31M vs $10.44M)
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_ALL">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_ALL">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_ALL">Regional CAPEX Breakdown (Strategic vs M.O.B)</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_ALL"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_ALL"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_ALL"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_ALL"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; CONSOLIDATED AGRI B GROUP (ALL)
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_ALL"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_Philippines">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-ph" style="margin-right:6px;">PH</span> <strong>Philippines (Feed)</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Philippines">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Philippines (Feed)</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Philippines">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Philippines">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Philippines">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Philippines">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Philippines">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Philippines">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Philippines">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Philippines">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Philippines">Philippines (Feed) - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Philippines"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Philippines"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Philippines"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Philippines"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Philippines (Feed)
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Philippines"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_Vietnam">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-vn" style="margin-right:6px;">VN</span> <strong>Vietnam</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Vietnam">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Vietnam</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Vietnam">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Vietnam">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Vietnam">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Vietnam">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Vietnam">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Vietnam">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Vietnam">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Vietnam">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Vietnam">Vietnam - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Vietnam"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Vietnam"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Vietnam"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Vietnam"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Vietnam
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Vietnam"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_Malaysia">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-my" style="margin-right:6px;">MY</span> <strong>Malaysia</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Malaysia">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Malaysia</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Malaysia">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Malaysia">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Malaysia">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Malaysia">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Malaysia">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Malaysia">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Malaysia">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Malaysia">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Malaysia">Malaysia - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Malaysia"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Malaysia"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Malaysia"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Malaysia"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Malaysia
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Malaysia"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_Indonesia">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-id" style="margin-right:6px;">ID</span> <strong>Indonesia</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Indonesia">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Indonesia</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Indonesia">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Indonesia">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Indonesia">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Indonesia">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Indonesia">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Indonesia">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Indonesia">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Indonesia">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Indonesia">Indonesia - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Indonesia"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Indonesia"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Indonesia"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Indonesia"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Indonesia
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Indonesia"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_China">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-cn" style="margin-right:6px;">CN</span> <strong>China</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_China">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>China</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_China">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_China">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_China">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_China">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_China">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_China">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_China">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_China">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_China">China - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_China"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_China"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_China"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_China"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; China
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_China"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_Diasham">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-ph" style="margin-right:6px;">SG</span> <strong>Diasham</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Diasham">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Diasham</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Diasham">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Diasham">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Diasham">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Diasham">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Diasham">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Diasham">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Diasham">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Diasham">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Diasham">Diasham - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Diasham"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Diasham"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Diasham"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Diasham"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Diasham
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Diasham"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page page-break" id="page_c_Holdco">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-my" style="margin-right:6px;">SG</span> <strong>Holdco</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Holdco">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Holdco</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Holdco">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Holdco">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Holdco">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Holdco">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Holdco">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Holdco">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Holdco">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Holdco">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Holdco">Holdco - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Holdco"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Holdco"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Holdco"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Holdco"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Holdco
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Holdco"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="pdf-page " id="page_c_Philippines_Food">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="header-brand">
+                <div class="logo-circle"><i class="fa-solid fa-seedling"></i></div>
+                <div>
+                    <h1>Aboitiz Foods &mdash; Agri B Group</h1>
+                    <div class="subtitle"><span class="tag-country tag-ph" style="margin-right:6px;">FN</span> <strong>Philippines (F&N)</strong> &mdash; CAPEX Budget 2027 Executive Financial Summary</div>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="pdf-badge"><i class="fa-solid fa-calendar-check"></i> FY 2027 Official Budget</div>
+            </div>
+        </div>
+
+        <!-- GUIDELINES BANNER (PAGE 1 ONLY) -->
+        
+
+        <!-- SCORECARDS (PAGE 1) -->
+        <div class="scorecard-grid" style="margin-bottom: 16px;">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">TOTAL CAPEX 2027 REQUEST</span>
+                    <div class="card-icon icon-red"><i class="fa-solid fa-dollar-sign"></i></div>
+                </div>
+                <div class="card-value" id="kpiTotalCapex_Philippines_Food">--</div>
+                <div class="card-foot">
+                    <span class="badge-success"><i class="fa-solid fa-check"></i> 100% Submitted</span>
+                    <span>Philippines (F&N)</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">STRATEGIC CAPEX (CI/EXP)</span>
+                    <div class="card-icon icon-blue"><i class="fa-solid fa-rocket"></i></div>
+                </div>
+                <div class="card-value" id="kpiStrategic_Philippines_Food">--</div>
+                <div class="card-foot">
+                    <span class="badge-info" id="kpiStratShare_Philippines_Food">--</span>
+                    <span>Capital Inv & Auto</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">M.O.B CAPEX REQUEST</span>
+                    <div class="card-icon icon-teal"><i class="fa-solid fa-wrench"></i></div>
+                </div>
+                <div class="card-value" id="kpiMOB_Philippines_Food">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiMOBShare_Philippines_Food">--</span>
+                    <span>Sustenance & HSSE</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">CAPPED M.O.B ENVELOPE</span>
+                    <div class="card-icon icon-green"><i class="fa-solid fa-shield"></i></div>
+                </div>
+                <div class="card-value" id="kpiCapAmount_Philippines_Food">--</div>
+                <div class="card-foot">
+                    <span class="badge-success" id="kpiCapVariance_Philippines_Food">--</span>
+                    <span>Production Envelope</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Q1 CASHFLOW DISBURSEMENT</span>
+                    <div class="card-icon icon-amber"><i class="fa-solid fa-bolt"></i></div>
+                </div>
+                <div class="card-value" id="kpiQ1_Philippines_Food">--</div>
+                <div class="card-foot">
+                    <span class="badge-alert" id="kpiQ1Share_Philippines_Food">--</span>
+                    <span>Procurement Lead</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHARTS GRID 2x2 -->
+        <div class="chart-grid-2x2" style="margin-bottom: 16px;">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-column"></i> <span id="chart1Title_Philippines_Food">Philippines (F&N) - Facilities Split</span>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regionChart_Philippines_Food"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-pie"></i> M.O.B Categories
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mobCategoryChart_Philippines_Food"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-chart-line"></i> Quarterly Disbursement Phasing (Q1 - Q4)
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phasingChart_Philippines_Food"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div class="chart-header-title">
+                        <i class="fa-solid fa-layer-group"></i> Project Priority Classification
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priorityChart_Philippines_Food"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATA TABLE -->
+        <div class="table-card">
+            <div class="table-controls">
+                <div class="chart-header-title">
+                    <i class="fa-solid fa-industry"></i> Facility Level M.O.B Breakdown & Budget Cap Variance &mdash; Philippines (F&N)
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Country</th>
+                            <th>Facility / Unit</th>
+                            <th class="text-right">Sustenance ($)</th>
+                            <th class="text-right">HSSE ($)</th>
+                            <th class="text-right">McPESO ($)</th>
+                            <th class="text-right">Legal/Risk ($)</th>
+                            <th class="text-right">Total M.O.B ($)</th>
+                            <th class="text-right">Budget Cap ($)</th>
+                            <th class="text-right">Cap Variance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_Philippines_Food"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Chart.register(ChartDataLabels);
+        Chart.defaults.animation = false;
+        Chart.defaults.font.family = 'Arial';
+
+        const dbData = {
+            ALL: {
+                total: 63061800,
+                strategic: 52748643,
+                mob: 10313157,
+                cap: 10435000,
+                prodMob: 10313157,
+                q1: 19995430,
+                mobCategories: [6147420, 1254142, 1972304, 939291],
+                phasingStrategic: [17161720, 19192641, 8917570, 7476712],
+                phasingMob: [2833710, 3433995, 2484431, 1561021],
+                priorities: [1997384, 58182705, 1778241, 58391]
+            },
+            Philippines: {
+                total: 39757030,
+                strategic: 36845149,
+                mob: 2911881,
+                cap: 3000000,
+                prodMob: 2113429,
+                q1: 10190143,
+                mobCategories: [2051268, 274355, 381452, 204806],
+                phasingStrategic: [9676127, 17424155, 7658793, 2086074],
+                phasingMob: [514016, 1036832, 758016, 603016],
+                priorities: [1719913, 36967569, 1069550, 0]
+            },
+            Vietnam: {
+                total: 7753265,
+                strategic: 6050392,
+                mob: 1702873,
+                cap: 1710000,
+                prodMob: 1702873,
+                q1: 144977,
+                mobCategories: [869822, 329765, 246009, 257277],
+                phasingStrategic: [0, 174800, 733683, 5141910],
+                phasingMob: [144977, 636094, 465840, 455962],
+                priorities: [0, 7397547, 355718, 0]
+            },
+            Malaysia: {
+                total: 8907566,
+                strategic: 6921201,
+                mob: 1986365,
+                cap: 2000000,
+                prodMob: 1986365,
+                q1: 8100569,
+                mobCategories: [1048561, 248635, 551452, 137717],
+                phasingStrategic: [6809539, 111663, 0, 0],
+                phasingMob: [1291030, 492109, 151117, 52109],
+                priorities: [0, 8642058, 228288, 37221]
+            },
+            Indonesia: {
+                total: 5007300,
+                strategic: 2370068,
+                mob: 2637232,
+                cap: 2650000,
+                prodMob: 2637232,
+                q1: 670014,
+                mobCategories: [1627432, 296540, 438315, 274945],
+                phasingStrategic: [221092, 1375153, 525094, 248729],
+                phasingMob: [448922, 796479, 977283, 414548],
+                priorities: [277471, 3929310, 782556, 17964]
+            },
+            China: {
+                total: 1361832,
+                strategic: 561832,
+                mob: 800000,
+                cap: 800000,
+                prodMob: 800000,
+                q1: 760764,
+                mobCategories: [421374, 64122, 276336, 38168],
+                phasingStrategic: [454962, 106870, 0, 0],
+                phasingMob: [305802, 431756, 53435, 9008],
+                priorities: [0, 1221221, 137405, 3206]
+            },
+            Diasham: {
+                total: 249806,
+                strategic: 0,
+                mob: 249806,
+                cap: 250000,
+                prodMob: 249806,
+                q1: 103964,
+                mobCategories: [103964, 40724, 78740, 26378],
+                phasingStrategic: [0, 0, 0, 0],
+                phasingMob: [103964, 40724, 78740, 26378],
+                priorities: [21833, 201989, 25984, 0]
+            },
+            Holdco: {
+                total: 25000,
+                strategic: 0,
+                mob: 25000,
+                cap: 25000,
+                prodMob: 25000,
+                q1: 25000,
+                mobCategories: [25000, 0, 0, 0],
+                phasingStrategic: [0, 0, 0, 0],
+                phasingMob: [25000, 0, 0, 0],
+                priorities: [0, 25000, 0, 0]
+            },
+            Philippines_Food: {
+                total: 35584058,
+                strategic: 24448387,
+                mob: 11135671,
+                cap: 11135671,
+                prodMob: 11135671,
+                q1: 10200000,
+                mobCategories: [7790510, 926613, 657258, 1761290],
+                phasingStrategic: [6000000, 8500000, 6000000, 3948387],
+                phasingMob: [4200000, 3100000, 2200000, 1635671],
+                priorities: [1600000, 18500000, 4000000, 11484058]
+            }
+        };
+
+        dbData.PH = dbData.Philippines;
+        dbData.VN = dbData.Vietnam;
+        dbData.ID = dbData.Indonesia;
+        dbData.MY = dbData.Malaysia;
+        dbData.CN = dbData.China;
+        dbData.SG = dbData.Holdco;
+        dbData.HK = dbData.Diasham;
+        dbData.PH_FOOD = dbData.Philippines_Food;
+
+        const facilityData = [
+            // Philippines Feed
+            { country: 'Philippines', name: 'PFC - Feeds', sust: 1449310, hsse: 203443, mcpeso: 399180, legal: 73770, strat: 3405599, mob: 2125703, cap: 2000000 },
+            { country: 'Philippines', name: 'PFC - General', sust: 525298, hsse: 57377, mcpeso: 0, legal: 0, strat: 33386282, mob: 582675, cap: 0 },
+            { country: 'Philippines', name: 'PANC - Feeds', sust: 526885, hsse: 161639, mcpeso: 127869, legal: 36066, strat: 5103705, mob: 852459, cap: 1000000 },
+            { country: 'Philippines', name: 'PANC - General', sust: 1078186, hsse: 195115, mcpeso: 0, legal: 0, strat: 0, mob: 1273301, cap: 0 },
+            { country: 'Philippines', name: 'PH Feed TOTAL', sust: 3579680, hsse: 617574, mcpeso: 527049, legal: 109836, strat: 41895586, mob: 4834139, cap: 3000000 },
+
+            // Vietnam
+            { country: 'Vietnam', name: 'PVF / PVC', sust: 184300, hsse: 115681, mcpeso: 93897, legal: 20657, strat: 1375385, mob: 414535, cap: 390000 },
+            { country: 'Vietnam', name: 'GCFBD', sust: 89915, hsse: 18779, mcpeso: 9390, legal: 11268, strat: 0, mob: 129352, cap: 320000 },
+            { country: 'Vietnam', name: 'GCFHN', sust: 183587, hsse: 45070, mcpeso: 60094, legal: 37559, strat: 825540, mob: 326310, cap: 450000 },
+            { country: 'Vietnam', name: 'AFC', sust: 272000, hsse: 49577, mcpeso: 41315, legal: 187793, strat: 120188, mob: 550685, cap: 400000 },
+            { country: 'Vietnam', name: 'GCFLA', sust: 140019, hsse: 100657, mcpeso: 41315, legal: 0, strat: 4044069, mob: 281991, cap: 150000 },
+            { country: 'Vietnam', name: 'Vietnam TOTAL', sust: 869822, hsse: 329765, mcpeso: 246009, legal: 257277, strat: 6365182, mob: 1702873, cap: 1710000 },
+
+            // Malaysia
+            { country: 'Malaysia', name: 'GCFM-BW', sust: 236352, hsse: 0, mcpeso: 119107, legal: 88089, strat: 421836, mob: 443548, cap: 400000 },
+            { country: 'Malaysia', name: 'GCFM-PK', sust: 195285, hsse: 143921, mcpeso: 246241, legal: 49628, strat: 105793, mob: 635075, cap: 440000 },
+            { country: 'Malaysia', name: 'GCS', sust: 506328, hsse: 24814, mcpeso: 94293, legal: 0, strat: 583127, mob: 625434, cap: 800000 },
+            { country: 'Malaysia', name: 'GCFS', sust: 29777, hsse: 19851, mcpeso: 17370, legal: 0, strat: 1000101, mob: 66998, cap: 50000 },
+            { country: 'Malaysia', name: 'GCSSB', sust: 78337, hsse: 60050, mcpeso: 74442, legal: 0, strat: 0, mob: 212829, cap: 300000 },
+            { country: 'Malaysia', name: 'GCFM-RF', sust: 2481, hsse: 0, mcpeso: 0, legal: 0, strat: 3455525, mob: 2481, cap: 10000 },
+            { country: 'Malaysia', name: 'Malaysia TOTAL', sust: 1048561, hsse: 248635, mcpeso: 551452, legal: 137717, strat: 5566382, mob: 1986365, cap: 2000000 },
+
+            // Indonesia
+            { country: 'Indonesia', name: 'AU', sust: 42150, hsse: 0, mcpeso: 0, legal: 8164, strat: 1181288, mob: 50314, cap: 50000 },
+            { country: 'Indonesia', name: 'GCIBKS', sust: 796888, hsse: 115983, mcpeso: 305516, legal: 244979, strat: 537482, mob: 1463366, cap: 1500000 },
+            { country: 'Indonesia', name: 'GCIMDN', sust: 281669, hsse: 40170, mcpeso: 109194, legal: 0, strat: 0, mob: 431033, cap: 450000 },
+            { country: 'Indonesia', name: 'GCSILMP', sust: 64158, hsse: 29986, mcpeso: 0, legal: 0, strat: 56577, mob: 94144, cap: 50000 },
+            { country: 'Indonesia', name: 'GCISBY', sust: 486620, hsse: 77793, mcpeso: 11315, legal: 28289, strat: 650636, mob: 604017, cap: 600000 },
+            { country: 'Indonesia', name: 'Indonesia TOTAL', sust: 1671485, hsse: 263932, mcpeso: 426025, legal: 281431, strat: 2425984, mob: 2642874, cap: 2650000 },
+
+            // China
+            { country: 'China', name: 'GCDG', sust: 66565, hsse: 22901, mcpeso: 131298, legal: 0, strat: 251908, mob: 220763, cap: 150000 },
+            { country: 'China', name: 'GCZH', sust: 239720, hsse: 6993, mcpeso: 20979, legal: 34965, strat: 48951, mob: 302657, cap: 400000 },
+            { country: 'China', name: 'GCZZ', sust: 72977, hsse: 15267, mcpeso: 114504, legal: 0, strat: 149618, mob: 202748, cap: 130000 },
+            { country: 'China', name: 'GCGX', sust: 0, hsse: 0, mcpeso: 0, legal: 0, strat: 0, mob: 0, cap: 0 },
+            { country: 'China', name: 'GCYN', sust: 43206, hsse: 18321, mcpeso: 7634, legal: 0, strat: 106870, mob: 69160, cap: 120000 },
+            { country: 'China', name: 'GCSZ', sust: 3969, hsse: 0, mcpeso: 0, legal: 0, strat: 0, mob: 3969, cap: 0 },
+            { country: 'China', name: 'China TOTAL', sust: 426438, hsse: 63482, mcpeso: 274414, legal: 34965, strat: 557348, mob: 799299, cap: 800000 },
+
+            // Holdco & Diasham
+            { country: 'Holdco', name: 'Aqua Hub', sust: 25000, hsse: 0, mcpeso: 0, legal: 0, strat: 0, mob: 25000, cap: 25000 },
+            { country: 'Holdco', name: 'Holdco TOTAL', sust: 25000, hsse: 0, mcpeso: 0, legal: 0, strat: 0, mob: 25000, cap: 25000 },
+            { country: 'Diasham', name: 'Diasham', sust: 103964, hsse: 40724, mcpeso: 78740, legal: 26378, strat: 795276, mob: 249806, cap: 250000 },
+            { country: 'Diasham', name: 'Diasham TOTAL', sust: 103964, hsse: 40724, mcpeso: 78740, legal: 26378, strat: 795276, mob: 249806, cap: 250000 },
+
+            // Philippines Food & Nutrition (F&N)
+            { country: 'Philippines_Food', name: 'PFC - Flour', sust: 7070291, hsse: 941803, mcpeso: 647541, legal: 768852, strat: 24804098, mob: 9428488, cap: 0 },
+            { country: 'Philippines_Food', name: 'PANC - Meats', sust: 314867, hsse: 0, mcpeso: 49180, legal: 37705, strat: 0, mob: 401752, cap: 0 },
+            { country: 'Philippines_Food', name: 'PANC - Farms', sust: 9036772, hsse: 0, mcpeso: 0, legal: 2685246, strat: 0, mob: 11722018, cap: 0 },
+            { country: 'Philippines_Food', name: 'PFC - Trading', sust: 72000, hsse: 0, mcpeso: 0, legal: 0, strat: 0, mob: 72000, cap: 0 },
+            { country: 'Philippines_Food', name: 'Ph F&N TOTAL', sust: 16493929, hsse: 941803, mcpeso: 696721, legal: 3491803, strat: 24804098, mob: 21624257, cap: 0 }
+        ];
+
+        const bpData = {
+            ALL: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [69846113, 43602931, 61647281, 10529384, 16561721],
+                strategic: [57605757, 31256009, 54013019, 7183117, 12112218],
+                mob: [12240356, 12346922, 7634262, 3346267, 4449503],
+                mob1: [7724949, 10075775, 5326848, 2406598, 3556200],
+                mob2: [1564112, 984852, 458914, 209790, 65935],
+                mob3: [2103690, 1266432, 606924, 663987, 827368],
+                mob4: [847605, 19863, 1241576, 65892, 0],
+                s1: [39275080, 1887431, 14988169, 4996056, 0],
+                s2: [18330677, 29368578, 39024850, 2187061, 12112218]
+            },
+            Philippines: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [46729724, 9921671, 6846513, 622131, 9732925],
+                strategic: [41895586, 7562418, 6561267, 622131, 9732925],
+                mob: [4834139, 2231754, 285246, 0, 0],
+                mob1: [3579680, 1684153, 167359, 0, 0],
+                mob2: [617574, 448180, 0, 0, 0],
+                mob3: [527049, 99421, 117887, 0, 0],
+                mob4: [109836, 0, 0, 0, 0],
+                s1: [32647757, 0, 0, 0, 0],
+                s2: [9247828, 7562418, 6561267, 622131, 9732925]
+            },
+            Vietnam: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [8068055, 8453681, 17391549, 6683944, 4339155],
+                strategic: [6365182, 6352649, 15382535, 4996056, 2003005],
+                mob: [1702873, 2101033, 2009014, 1687887, 2336150],
+                mob1: [869822, 1888775, 1720846, 1687887, 2336150],
+                mob2: [329765, 81878, 0, 0, 0],
+                mob3: [246009, 130380, 288168, 0, 0],
+                mob4: [257277, 0, 0, 0, 0],
+                s1: [990408, 0, 14988169, 4996056, 0],
+                s2: [5374774, 6352649, 394366, 0, 2003005]
+            },
+            Malaysia: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [7552747, 12481033, 16852987, 662680, 893300],
+                strategic: [5566382, 10334466, 13202186, 248139, 0],
+                mob: [1986365, 2146567, 3650801, 414541, 893300],
+                mob1: [1048561, 1962989, 3650801, 414541, 893300],
+                mob2: [248635, 119107, 0, 0, 0],
+                mob3: [551452, 64471, 0, 0, 0],
+                mob4: [137717, 0, 0, 0, 0],
+                s1: [4455626, 887431, 0, 0, 0],
+                s2: [1110756, 9447035, 13202186, 248139, 0]
+            },
+            Indonesia: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [5068858, 7854690, 19067567, 933938, 507013],
+                strategic: [2425984, 5202263, 17991513, 254597, 0],
+                mob: [2642874, 2652427, 1076054, 679341, 507013],
+                mob1: [1671485, 2309488, 602536, 485911, 441078],
+                mob2: [263932, 0, 144194, 0, 65935],
+                mob3: [426025, 342939, 329324, 193430, 0],
+                mob4: [281431, 0, 0, 0, 0],
+                s1: [1181288, 393348, 0, 0, 0],
+                s2: [1244696, 4808915, 17991513, 254597, 0]
+            },
+            China: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [1356647, 3138979, 1440360, 1587321, 1089328],
+                strategic: [557348, 1804340, 874890, 1062194, 376288],
+                mob: [799299, 1334639, 565471, 525127, 713040],
+                mob1: [426438, 1033318, 565471, 315337, 713040],
+                mob2: [63482, 0, 0, 209790, 0],
+                mob3: [274414, 301321, 0, 0, 0],
+                mob4: [34965, 0, 0, 0, 0],
+                s1: [0, 0, 0, 0, 0],
+                s2: [557348, 1804340, 874890, 1062194, 376288]
+            },
+            Holdco: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [25000, 53601, 8934, 0, 0],
+                strategic: [0, 0, 0, 0, 0],
+                mob: [25000, 53601, 8934, 0, 0],
+                mob1: [25000, 53601, 8934, 0, 0],
+                mob2: [0, 0, 0, 0, 0],
+                mob3: [0, 0, 0, 0, 0],
+                mob4: [0, 0, 0, 0, 0],
+                s1: [0, 0, 0, 0, 0],
+                s2: [0, 0, 0, 0, 0]
+            },
+            Diasham: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [1045082, 1699276, 39370, 39370, 0],
+                strategic: [795276, 0, 0, 0, 0],
+                mob: [249806, 1699276, 39370, 39370, 0],
+                mob1: [103964, 1699276, 39370, 39370, 0],
+                mob2: [40724, 0, 0, 0, 0],
+                mob3: [78740, 0, 0, 0, 0],
+                mob4: [26378, 0, 0, 0, 0],
+                s1: [0, 0, 0, 0, 0],
+                s2: [795276, 0, 0, 0, 0]
+            },
+            Philippines_Food: {
+                years: ['2027', '2028', '2029', '2030', '2031'],
+                total: [46428356, 35493640, 11019422, 2453066, 63836],
+                strategic: [24804098, 25341881, 6321127, 2419230, 0],
+                mob: [21624257, 10151758, 4698295, 33836, 63836],
+                mob1: [16493929, 8243185, 4147475, 33836, 63836],
+                mob2: [941803, 695082, 140984, 0, 0],
+                mob3: [696721, 668852, 0, 0, 0],
+                mob4: [3491803, 544639, 409836, 0, 0],
+                s1: [0, 16119501, 1201468, 0, 0],
+                s2: [24804098, 9222381, 5119659, 2419230, 0]
+            }
+        };
+
+        function formatM(val) {
+            if (!val || val === 0) return '.00';
+            if (val >= 1000000) {
+                return '$' + (val / 1000000).toFixed(2) + 'M';
+            } else if (val >= 1000) {
+                return '$' + (val / 1000).toFixed(2) + 'K';
+            } else {
+                return '$' + Number(val).toFixed(2);
+            }
+        }
+
+        function formatNumber(num) {
+            if (!num && num !== 0) return '0';
+            return Math.round(num).toLocaleString('en-US');
+        }
+
+        const countryList = ['ALL', 'Philippines', 'Vietnam', 'Malaysia', 'Indonesia', 'China', 'Diasham', 'Holdco', 'Philippines_Food'];
+
+        countryList.forEach(function(cCode) {
+            const dataObj = dbData[cCode] || dbData.ALL;
+            
+            // Scorecards
+            const elTotal = document.getElementById('kpiTotalCapex_' + cCode);
+            if (elTotal) elTotal.innerText = formatM(dataObj.total);
+
+            const elStrat = document.getElementById('kpiStrategic_' + cCode);
+            if (elStrat) elStrat.innerText = formatM(dataObj.strategic);
+
+            const elStratShare = document.getElementById('kpiStratShare_' + cCode);
+            if (elStratShare) {
+                const stratPct = dataObj.total > 0 ? ((dataObj.strategic / dataObj.total) * 100).toFixed(1) : 0;
+                elStratShare.innerText = stratPct + '% Share';
+            }
+
+            const elMOB = document.getElementById('kpiMOB_' + cCode);
+            if (elMOB) elMOB.innerText = formatM(dataObj.mob);
+
+            const elMOBShare = document.getElementById('kpiMOBShare_' + cCode);
+            if (elMOBShare) {
+                const mobPct = dataObj.total > 0 ? ((dataObj.mob / dataObj.total) * 100).toFixed(1) : 0;
+                elMOBShare.innerText = mobPct + '% Share';
+            }
+
+            const elCap = document.getElementById('kpiCapAmount_' + cCode);
+            if (elCap) elCap.innerText = dataObj.cap > 0 ? formatM(dataObj.cap) : 'No Cap';
+
+            const elVar = document.getElementById('kpiCapVariance_' + cCode);
+            if (elVar) {
+                if (dataObj.cap > 0) {
+                    const variance = dataObj.mob - dataObj.cap;
+                    if (variance > 0) {
+                        elVar.innerText = '+' + formatM(variance) + ' Over Cap';
+                        elVar.style.color = '#dc2626';
+                    } else if (variance < 0) {
+                        elVar.innerText = '-' + formatM(Math.abs(variance)) + ' Under Cap';
+                        elVar.style.color = '#16a34a';
+                    } else {
+                        elVar.innerText = ' Variance';
+                        elVar.style.color = '#16a34a';
+                    }
+                } else {
+                    elVar.innerText = 'Uncapped';
+                    elVar.style.color = '#64748b';
+                }
+            }
+
+            const elQ1 = document.getElementById('kpiQ1_' + cCode);
+            if (elQ1) elQ1.innerText = formatM(dataObj.q1);
+
+            const elQ1Share = document.getElementById('kpiQ1Share_' + cCode);
+            if (elQ1Share) {
+                const q1Pct = dataObj.total > 0 ? ((dataObj.q1 / dataObj.total) * 100).toFixed(1) : 0;
+                elQ1Share.innerText = q1Pct + '% Q1 Front-Loaded';
+            }
+
+            // Table
+            const tbody = document.getElementById('tableBody_' + cCode);
+            if (tbody) {
+                const filteredData = cCode === 'ALL' ? facilityData : facilityData.filter(f => f.country === cCode);
+                filteredData.forEach(item => {
+                    const totalMob = item.sust + item.hsse + item.mcpeso + item.legal;
+                    const variance = item.cap > 0 ? (totalMob - item.cap) : 0;
+                    const isTotalRow = item.name.indexOf('TOTAL') !== -1;
+                    const isSubtotalRow = item.name.indexOf('Subtotal') !== -1;
+                    let tagClass = 'tag-vn';
+                    if (item.country === 'Malaysia') tagClass = 'tag-my';
+                    if (item.country === 'Philippines' || item.country === 'Philippines_Food') tagClass = 'tag-ph';
+                    if (item.country === 'Indonesia') tagClass = 'tag-id';
+                    if (item.country === 'China') tagClass = 'tag-cn';
+                    if (item.country === 'Holdco') tagClass = 'tag-my';
+                    if (item.country === 'Diasham') tagClass = 'tag-ph';
+
+                    const tr = document.createElement('tr');
+                    if (isSubtotalRow) {
+                        tr.style.background = '#f0fdf4';
+                        tr.style.borderTop = '1.5px solid #86efac';
+                        tr.style.borderBottom = '1.5px solid #86efac';
+                    } else if (isTotalRow) {
+                        tr.style.background = '#f8fafc';
+                        tr.style.borderTop = '2px solid #00543D';
+                    }
+
+                    tr.innerHTML = '<td><span class="tag-country ' + tagClass + '">' + item.country + '</span></td>' +
+                        '<td style="' + (isTotalRow ? 'font-weight:800; color:#00543D;' : (isSubtotalRow ? 'font-weight:800; color:#166534;' : 'font-weight:500;')) + '">' + item.name + '</td>' +
+                        '<td class="text-right font-mono">$' + formatNumber(item.sust) + '</td>' +
+                        '<td class="text-right font-mono">$' + formatNumber(item.hsse) + '</td>' +
+                        '<td class="text-right font-mono">$' + formatNumber(item.mcpeso) + '</td>' +
+                        '<td class="text-right font-mono">$' + formatNumber(item.legal) + '</td>' +
+                        '<td class="text-right font-mono" style="font-weight:800;' + (isSubtotalRow ? ' color:#166534;' : '') + '">$' + formatNumber(totalMob) + '</td>' +
+                        '<td class="text-right font-mono" style="' + (isTotalRow || isSubtotalRow ? 'font-weight:800; color:#0f172a;' : '') + '">' + (item.cap > 0 ? '$' + formatNumber(item.cap) : '-') + '</td>' +
+                        '<td class="text-right font-mono" style="font-weight:800; color: ' + (item.cap > 0 ? (variance > 0 ? '#e11d48' : '#166534') : '#64748b') + ';">' +
+                            (item.cap > 0 ? (variance > 0 ? '+$' + formatNumber(variance) : (variance < 0 ? '-$' + formatNumber(Math.abs(variance)) : '$0')) : (isSubtotalRow ? 'Special Envelope' : '-')) +
+                        '</td>';
+                    tbody.appendChild(tr);
+                });
+            }
+
+            // Chart 1: Region / Facility Breakdown
+            const canvas1 = document.getElementById('regionChart_' + cCode);
+            if (canvas1) {
+                let labels = [];
+                let stratData = [];
+                let mobData = [];
+                if (cCode === 'ALL') {
+                    const cList = ['Philippines', 'Vietnam', 'Malaysia', 'Indonesia', 'China', 'Diasham', 'Holdco'];
+                    labels = ['Philippines (Feed)', 'Vietnam', 'Malaysia', 'Indonesia', 'China', 'Diasham', 'Holdco'];
+                    cList.forEach(c => {
+                        const d = dbData[c] || { strategic: 0, mob: 0 };
+                        stratData.push(d.strategic);
+                        mobData.push(d.mob);
+                    });
+                } else {
+                    const facs = facilityData.filter(f => f.country === cCode);
+                    facs.forEach(f => {
+                        labels.push(f.name);
+                        stratData.push(f.strat);
+                        mobData.push(f.mob);
+                    });
+                }
+
+                new Chart(canvas1.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Strategic CAPEX',
+                                data: stratData,
+                                backgroundColor: '#0284c7',
+                                borderRadius: 4,
+                                datalabels: {
+                                    display: c => c.dataset.data[c.dataIndex] > 0,
+                                    color: '#ffffff',
+                                    anchor: 'center',
+                                    align: 'center',
+                                    font: { family: 'Arial', weight: 'bold', size: 9.5 },
+                                    formatter: val => formatM(val)
+                                }
+                            },
+                            {
+                                label: 'M.O.B CAPEX',
+                                data: mobData,
+                                backgroundColor: cCode === 'Philippines' ? '#00543D' : '#0d9488',
+                                borderRadius: 4,
+                                datalabels: {
+                                    display: c => c.dataset.data[c.dataIndex] > 0,
+                                    color: '#ffffff',
+                                    anchor: 'center',
+                                    align: 'center',
+                                    font: { family: 'Arial', weight: 'bold', size: 9.5 },
+                                    formatter: val => formatM(val)
+                                }
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 15 } },
+                        scales: {
+                            x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', size: 9, weight: 'bold' } } },
+                            y: { stacked: true, grid: { color: '#f1f5f9' }, ticks: { font: { family: 'Arial', size: 8.5 }, callback: val => formatM(val) } }
+                        },
+                        plugins: {
+                            legend: { position: 'top', labels: { font: { family: 'Arial', size: 9 } } }
+                        }
+                    }
+                });
+            }
+
+            // Chart 2: MOB Categories Doughnut
+            const canvas2 = document.getElementById('mobCategoryChart_' + cCode);
+            if (canvas2) {
+                const mobCats = dataObj.mobCategories || [0,0,0,0];
+                const totalMob = mobCats.reduce((a,b)=>a+b, 0);
+                const bgColors = cCode === 'Philippines'
+                    ? ['#00543D', '#007a59', '#0d9488', '#10b981']
+                    : ['#0d9488', '#f59e0b', '#2563eb', '#dc2626'];
+
+                new Chart(canvas2.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Sustenance (MOB1)', 'HSSE (MOB2)', 'McPESO (MOB3)', 'Legal & Risk (MOB4)'],
+                        datasets: [{ data: mobCats, backgroundColor: bgColors, borderWidth: 2, borderColor: '#ffffff' }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'right', labels: { font: { family: 'Arial', size: 9 } } },
+                            datalabels: {
+                                display: c => totalMob > 0 && (c.dataset.data[c.dataIndex] / totalMob) >= 0.04,
+                                color: '#ffffff',
+                                font: { family: 'Arial', weight: 'bold', size: 9.5 },
+                                formatter: val => formatM(val) + '\n(' + ((val/totalMob)*100).toFixed(1) + '%)'
+                            }
+                        },
+                        cutout: '58%'
+                    }
+                });
+            }
+
+            // Chart 3: Phasing
+            const canvas3 = document.getElementById('phasingChart_' + cCode);
+            if (canvas3) {
+                new Chart(canvas3.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Q1 (Jan - Mar)', 'Q2 (Apr - Jun)', 'Q3 (Jul - Sep)', 'Q4 (Oct - Dec)'],
+                        datasets: [
+                            {
+                                label: 'Strategic Phasing',
+                                data: dataObj.phasingStrategic || [0,0,0,0],
+                                backgroundColor: '#0284c7',
+                                borderRadius: 4,
+                                datalabels: {
+                                    display: c => c.dataset.data[c.dataIndex] > 0,
+                                    color: '#ffffff',
+                                    anchor: 'center',
+                                    align: 'center',
+                                    font: { family: 'Arial', weight: 'bold', size: 9.5 },
+                                    formatter: val => formatM(val)
+                                }
+                            },
+                            {
+                                label: 'M.O.B Phasing',
+                                data: dataObj.phasingMob || [0,0,0,0],
+                                backgroundColor: cCode === 'Philippines' ? '#00543D' : '#0d9488',
+                                borderRadius: 4,
+                                datalabels: {
+                                    display: c => c.dataset.data[c.dataIndex] > 0,
+                                    color: '#ffffff',
+                                    anchor: 'center',
+                                    align: 'center',
+                                    font: { family: 'Arial', weight: 'bold', size: 9.5 },
+                                    formatter: val => formatM(val)
+                                }
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 15 } },
+                        scales: {
+                            x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', size: 9 } } },
+                            y: { stacked: true, grid: { color: '#f1f5f9' }, ticks: { font: { family: 'Arial', size: 8.5 }, callback: val => formatM(val) } }
+                        },
+                        plugins: {
+                            legend: { position: 'top', labels: { font: { family: 'Arial', size: 9 } } }
+                        }
+                    }
+                });
+            }
+
+            // Chart 4: Priority
+            const canvas4 = document.getElementById('priorityChart_' + cCode);
+            if (canvas4) {
+                const pri = dataObj.priorities || [0,0,0,0];
+                const totalPri = pri.reduce((a,b)=>a+b, 0);
+                const bgColors = cCode === 'Philippines'
+                    ? ['#003828', '#00543D', '#007a59', '#10b981']
+                    : ['#dc2626', '#00543D', '#f59e0b', '#64748b'];
+
+                new Chart(canvas4.getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['P0 (Mandatory)', 'P1 (High Strategy)', 'P2 (Medium)', 'P3 (Low)'],
+                        datasets: [{ data: pri, backgroundColor: bgColors, borderRadius: 6 }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { right: 75 } },
+                        scales: {
+                            x: { grid: { color: '#f1f5f9' }, ticks: { font: { family: 'Arial', size: 8.5 }, callback: val => formatM(val) } },
+                            y: { grid: { display: false }, ticks: { font: { family: 'Arial', size: 9, weight: 'bold' } } }
+                        },
+                        plugins: {
+                            legend: { display: false },
+                            datalabels: {
+                                display: c => c.dataset.data[c.dataIndex] > 0,
+                                color: '#0f172a',
+                                anchor: 'end',
+                                align: 'right',
+                                offset: 4,
+                                font: { family: 'Arial', weight: 'bold', size: 9.5 },
+                                formatter: val => formatM(val) + ' (' + (totalPri > 0 ? ((val/totalPri)*100).toFixed(1) + '%' : '') + ')'
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

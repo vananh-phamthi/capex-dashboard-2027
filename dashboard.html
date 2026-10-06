@@ -14,7 +14,13 @@
             document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');
         }
     </script>
-    <script src="chartjs-plugin-datalabels.min.js"></script>
+<script src="chartjs-plugin-datalabels.min.js"></script>
+    <script src="pptxgen.bundle.js"></script>
+    <script>
+        if (typeof PptxGenJS === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"><\/script>');
+        }
+    </script>
     <script>
         if (typeof ChartDataLabels === 'undefined') {
             document.write('<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"><\/script>');
@@ -997,38 +1003,39 @@
 
                         <!-- PPTX EXPORT MODAL -->
         <div id="pptxModalOverlay" class="pdf-modal-overlay" onclick="if(event.target===this) closePptxModal()">
-            <div class="pdf-modal" style="max-width: 680px;">
+            <div class="pdf-modal" style="max-width: 700px;">
                 <div class="pdf-modal-header">
                     <h3><i class="fa-solid fa-file-powerpoint" style="color: #d97706;"></i> Export Presentation to PowerPoint (.pptx)</h3>
                     <button class="pdf-modal-close" onclick="closePptxModal()">&times;</button>
                 </div>
                 <div class="pdf-options-list">
-                    <!-- Option 1: Full Executive Master Deck (52 Slides) -->
-                    <div class="pdf-opt-card" style="border-left: 4px solid #00543D;">
-                        <div class="pdf-opt-icon" style="background: rgba(0, 84, 61, 0.1); color: #00543D;"><i class="fa-solid fa-file-powerpoint"></i></div>
+                    <!-- Option 1: Live Dynamic PowerPoint Export -->
+                    <div class="pdf-opt-card" style="border-left: 4px solid #16a34a; background: #f0fdf4;">
+                        <div class="pdf-opt-icon" style="background: rgba(22, 163, 74, 0.15); color: #16a34a;"><i class="fa-solid fa-bolt"></i></div>
                         <div style="flex: 1;">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
-                                <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a;">Executive Master Deck (2027 – 2031)</h4>
-                                <span style="background: #16a34a; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 12px;">FULL 52 SLIDES</span>
+                                <h4 style="font-size: 1rem; font-weight: 800; color: #14532d;">Generate Dynamic PowerPoint (.pptx) &mdash; Latest Data</h4>
+                                <span style="background: #16a34a; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 12px;"><i class="fa-solid fa-bolt"></i> DYNAMIC EXPORT</span>
                             </div>
-                            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 10px; line-height: 1.45;">Comprehensive 52-slide presentation: Executive Overview, Agri B &amp; PH F&amp;N governance, priority classification, execution readiness, and 7 deep-dive country chapters.</p>
+                            <p style="font-size: 0.82rem; color: #334155; margin-bottom: 10px; line-height: 1.45;">Dynamically compiles all latest financial numbers for the active filter (<strong id="dynPptxTargetUnit">Consolidated Agri B Group Total</strong>), including 2027 Scorecards, M.O.B Categories, Phasing Q1&ndash;Q4, and 5&ndash;Year Business Plan into an executive PowerPoint presentation right in your browser.</p>
                             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <a class="btn-pdf-act" style="background: #00543D; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" href="27-31-Aboitiz Foods CAPEX Presentation.pptx" download="Aboitiz_Foods_CAPEX_2027_2031_Full_52Slides.pptx"><i class="fa-solid fa-download"></i> Download Full 52 Slides (.pptx)</a>
-                                <a class="btn-pdf-act outline" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" href="Aboitiz_Foods_CAPEX_2027_2031_Executive_Deck.pptx" download="Aboitiz_Foods_CAPEX_2027_2031_Executive_52Slides.pptx"><i class="fa-solid fa-file-powerpoint" style="color: #d97706;"></i> Executive Deck (52 Slides)</a>
+                                <button class="btn-pdf-act" id="btnExportPptxDynamic" style="background: #16a34a; color: #fff; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" onclick="exportDynamicPptx()"><i class="fa-solid fa-bolt"></i> Download Dynamic PowerPoint (.pptx)</button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Option 2: Final Streamlined Deck -->
-                    <div class="pdf-opt-card" style="border-left: 4px solid #d97706;">
-                        <div class="pdf-opt-icon" style="background: rgba(217, 119, 6, 0.1); color: #d97706;"><i class="fa-solid fa-presentation-screen"></i></div>
+                    <!-- Option 2: Full Executive Master Deck (52 Slides) -->
+                    <div class="pdf-opt-card" style="border-left: 4px solid #00543D;">
+                        <div class="pdf-opt-icon" style="background: rgba(0, 84, 61, 0.1); color: #00543D;"><i class="fa-solid fa-file-powerpoint"></i></div>
                         <div style="flex: 1;">
                             <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
-                                <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a;">Final Synchronized Presentation Deck</h4>
+                                <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a;">Executive Master Deck (2027 &ndash; 2031)</h4>
+                                <span style="background: #16a34a; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 12px;">FULL 52 SLIDES</span>
                             </div>
-                            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 10px; line-height: 1.45;">Standard 16:9 widescreen PowerPoint deck, optimized for Board of Directors and Executive Committee reviews.</p>
+                            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 10px; line-height: 1.45;">Comprehensive 52-slide corporate presentation: Executive Overview, Agri B &amp; PH F&amp;N governance, priority classification, execution readiness, and 7 deep-dive country chapters synchronized with latest data.</p>
                             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <a class="btn-pdf-act" style="background: #d97706; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" href="Aboitiz_Foods_CAPEX_2027_2031_Final_Presentation.pptx" download="Aboitiz_Foods_CAPEX_2027_2031_Final_52Slides.pptx"><i class="fa-solid fa-download"></i> Download Final Deck (.pptx)</a>
+                                <a class="btn-pdf-act" style="background: #00543D; color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" href="27-31-Aboitiz Foods CAPEX Presentation.pptx" download="Aboitiz_Foods_CAPEX_2027_2031_Full_52Slides.pptx"><i class="fa-solid fa-download"></i> Download Full 52 Slides (.pptx)</a>
+                                <a class="btn-pdf-act outline" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" href="Aboitiz_Foods_CAPEX_2027_2031_Executive_Deck.pptx" download="Aboitiz_Foods_CAPEX_2027_2031_Executive_52Slides.pptx"><i class="fa-solid fa-file-powerpoint" style="color: #d97706;"></i> Executive Deck (.pptx)</a>
                             </div>
                         </div>
                     </div>
@@ -1041,13 +1048,28 @@
 
         <!-- PDF EXPORT MODAL -->
         <div id="pdfModalOverlay" class="pdf-modal-overlay" onclick="if(event.target===this) closePdfModal()">
-            <div class="pdf-modal" style="max-width: 680px;">
+            <div class="pdf-modal" style="max-width: 700px;">
                 <div class="pdf-modal-header">
                     <h3><i class="fa-solid fa-file-pdf" style="color: #c8102e;"></i> Export &amp; Download PDF Reports</h3>
                     <button class="pdf-modal-close" onclick="closePdfModal()">&times;</button>
                 </div>
                 <div class="pdf-options-list">
-                    <!-- Option 1: Full CAPEX Budget 2027 Report (9 Pages) -->
+                    <!-- Option 1: Live Dynamic PDF Screen Print -->
+                    <div class="pdf-opt-card" style="border-left: 4px solid #16a34a; background: #f0fdf4;">
+                        <div class="pdf-opt-icon" style="background: rgba(22, 163, 74, 0.15); color: #16a34a;"><i class="fa-solid fa-bolt"></i></div>
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 2px;">
+                                <h4 style="font-size: 1rem; font-weight: 800; color: #14532d;">Live PDF Export (Current Screen &amp; Filters)</h4>
+                                <span style="background: #16a34a; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 12px;"><i class="fa-solid fa-bolt"></i> LIVE PRINT/PDF</span>
+                            </div>
+                            <p style="font-size: 0.82rem; color: #334155; margin-bottom: 10px; line-height: 1.45;">Print or save the currently selected dashboard tab and country view directly from browser with executive print optimization and latest numbers.</p>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <button class="btn-pdf-act" style="background: #16a34a; color: #fff; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem;" onclick="printCurrentPage()"><i class="fa-solid fa-print"></i> Print / Save Current Screen to PDF</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Option 2: Full CAPEX Budget 2027 Executive Report (9 Pages) -->
                     <div class="pdf-opt-card" style="border-left: 4px solid #00543D;">
                         <div class="pdf-opt-icon green"><i class="fa-solid fa-book-open"></i></div>
                         <div style="flex: 1;">
@@ -1055,21 +1077,11 @@
                                 <h4 style="font-size: 1rem; font-weight: 800; color: #0f172a;">Full CAPEX Budget 2027 Executive Report</h4>
                                 <span style="background: #16a34a; color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 12px;">9 PAGES A4 LANDSCAPE</span>
                             </div>
-                            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 10px; line-height: 1.45;">Comprehensive 9-page executive PDF: Consolidated Agri B Group Total + Philippines (Feed), Philippines (F&amp;N), Vietnam, Malaysia, Indonesia, China, Diasham &amp; Holdco with 36 high-resolution charts &amp; facility tables.</p>
+                            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 10px; line-height: 1.45;">Comprehensive 9-page executive PDF: Consolidated Agri B Group Total + Philippines (Feed), Vietnam, Malaysia, Indonesia, China, Diasham &amp; Holdco with 36 high-resolution charts &amp; facility tables.</p>
                             <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                <a class="btn-pdf-act green" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; background: #00543D; color: #fff;" href="Capex_Budget_2027_Executive_Full_Report.pdf" target="_blank" download="Capex_Budget_2027_Executive_Full_Report.pdf"><i class="fa-solid fa-download"></i> Download PDF Report (9 Pages &bull; 885 KB)</a>
-                                <button class="btn-pdf-act outline" onclick="printFullReport('capex')"><i class="fa-solid fa-print"></i> Open / Print Report</button>
+                                <a class="btn-pdf-act green" style="text-decoration: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; background: #00543D; color: #fff;" href="Capex_Budget_2027_Executive_Full_Report.pdf" target="_blank" download="Capex_Budget_2027_Executive_Full_Report.pdf"><i class="fa-solid fa-download"></i> Download Full PDF Report (835 KB)</a>
+                                <button class="btn-pdf-act outline" onclick="printFullReport('capex')"><i class="fa-solid fa-up-right-from-square"></i> Open &amp; Print 9-Page Report</button>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Option 2: Active Screen Print -->
-                    <div class="pdf-opt-card" style="border-left: 4px solid #c8102e;">
-                        <div class="pdf-opt-icon red"><i class="fa-solid fa-print"></i></div>
-                        <div style="flex: 1;">
-                            <h4 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 2px; color: #0f172a;">Print Current Active Screen</h4>
-                            <p style="font-size: 0.82rem; color: #64748b; margin-bottom: 8px;">Print the currently selected dashboard tab and country view directly from browser.</p>
-                            <button class="btn-pdf-act red" onclick="printCurrentPage()"><i class="fa-solid fa-print"></i> Print Current Screen</button>
                         </div>
                     </div>
                 </div>
