@@ -1755,32 +1755,48 @@
                 <span class="slide-tag" style="background: #00543D; color: #fff; font-weight: 800; padding: 6px 12px; border-radius: 6px; font-size: 0.8rem;"><i class="fa-solid fa-building-columns"></i> Consolidated</span>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                <!-- Agri B Card -->
-                <div class="card" style="background: linear-gradient(135deg, #00543D 0%, #064e3b 100%); color: #fff; padding: 20px 24px; border-radius: 12px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-size: 1.1rem; font-weight: 800;"><i class="fa-solid fa-wheat-awn"></i> Agri B Group</span>
-                        <span style="background: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 12px;">64.4% Share</span>
+            <div style="display: grid; grid-template-columns: 1fr 1.35fr; gap: 20px; align-items: stretch;">
+                <div style="display: flex; flex-direction: column; gap: 12px; justify-content: space-between;">
+                    <!-- Total Consolidated Card -->
+                    <div class="card" style="background: #00543D; color: #fff; padding: 16px 20px; border-radius: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.78rem; font-weight: 800; color: #a7f3d0; text-transform: uppercase; letter-spacing: 0.5px;">TOTAL AGRI B + FOOD &amp; NUTRITION</span>
+                            <span style="background: rgba(255,255,255,0.2); color: #fff; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 12px;">Consolidated 2027</span>
+                        </div>
+                        <div style="font-size: 2.3rem; font-weight: 800; margin-top: 4px;" id="presS3_total">$99.86M</div>
+                        <div style="font-size: 0.82rem; color: #e2e8f0; margin-top: 4px; font-weight: 600;">&bull; Strategic Capex: <strong id="presS3_strat">$78.41M</strong> (78.5%) | M.O.B: <strong id="presS3_mob">$21.45M</strong> (21.5%)</div>
                     </div>
-                    <div style="font-size: 2.5rem; font-weight: 800; margin-top: 10px;" id="presS3_agrib_total">$64.28M</div>
-                    <div style="font-size: 0.9rem; color: #d1fae5; margin-top: 6px;" id="presS3_agrib_sub">Strategic: <strong>$53.96M</strong> | M.O.B: <strong>$10.31M</strong> (Cap: $10.44M, -$121.8K Under)</div>
-                    <div style="font-size: 0.85rem; color: #a7f3d0; margin-top: 10px; line-height: 1.5;">6 operating entities across Southeast Asia &amp; China. 16 feed mills and production facilities.</div>
+
+                    <!-- Agri B Summary Card -->
+                    <div class="card" style="background: #ffffff; border: 1.5px solid #bbf7d0; border-left: 5px solid #00543D; padding: 12px 18px; border-radius: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.95rem; font-weight: 800; color: #00543D;"><i class="fa-solid fa-wheat-awn"></i> 1. Agri B Group</span>
+                            <strong style="font-size: 1.35rem; color: #00543D; font-weight: 800;" id="presS3_agrib_total">$64.28M</strong>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #475569; font-weight: 600; margin-top: 4px;" id="presS3_agrib_sub">&bull; Strategic: <strong>$53.96M</strong> (84.0%) | M.O.B: <strong>$10.31M</strong> (16.0%) &bull; 5-Year $201.48M</div>
+                    </div>
+
+                    <!-- PH F&N Summary Card -->
+                    <div class="card" style="background: #ffffff; border: 1.5px solid #fed7aa; border-left: 5px solid #d97706; padding: 12px 18px; border-radius: 10px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 0.95rem; font-weight: 800; color: #d97706;"><i class="fa-solid fa-bread-slice"></i> 2. Philippines Food &amp; Nutrition (F&amp;N)</span>
+                            <strong style="font-size: 1.35rem; color: #d97706; font-weight: 800;" id="presS3_fn_total">$35.58M</strong>
+                        </div>
+                        <div style="font-size: 0.78rem; color: #475569; font-weight: 600; margin-top: 4px;" id="presS3_fn_sub">&bull; Strategic: <strong>$24.45M</strong> (68.7%) | M.O.B: <strong>$11.14M</strong> (31.3%) &bull; 5-Year $95.35M</div>
+                    </div>
                 </div>
 
-                <!-- Food & Nutrition Card -->
-                <div class="card" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #fff; padding: 20px 24px; border-radius: 12px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-size: 1.1rem; font-weight: 800;"><i class="fa-solid fa-bowl-food"></i> Philippines (Food &amp; Nutrition)</span>
-                        <span style="background: rgba(255,255,255,0.2); font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 12px;">35.6% Share</span>
+                <!-- Right Chart -->
+                <div class="card" style="background: #fff; padding: 18px 20px; border: 1.5px solid #e2e8f0; border-radius: 10px;">
+                    <div style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;"><i class="fa-solid fa-chart-column" style="color:#00543D;"></i> 2027 Consolidated CAPEX Split by Operating Unit ($M)</div>
+                    <div style="height: 275px; position: relative;">
+                        <canvas id="chartPresSlide4Split"></canvas>
                     </div>
-                    <div style="font-size: 2.5rem; font-weight: 800; margin-top: 10px;" id="presS3_fn_total">$35.58M</div>
-                    <div style="font-size: 0.9rem; color: #e0f2fe; margin-top: 6px;" id="presS3_fn_sub">Strategic: <strong>$24.45M</strong> | M.O.B: <strong>$11.14M</strong></div>
-                    <div style="font-size: 0.85rem; color: #bae6fd; margin-top: 10px; line-height: 1.5;">Flour, bakery, and meat processing business units in the Philippines.</div>
                 </div>
             </div>
 
             <!-- Footer Branding -->
-            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; margin-top: 18px; border-top: 1.5px solid #e2e8f0;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 12px; margin-top: 14px; border-top: 1.5px solid #e2e8f0;">
                 <div style="font-size: 0.82rem; font-weight: 700; color: #00543D; display: flex; align-items: center; gap: 8px;">
                     <i class="fa-solid fa-seedling"></i> Together We Nourish the Future
                 </div>
@@ -5264,11 +5280,6 @@ var presChartInstances = {};
 
 
     // ============================================================================
-// TAB 3 DYNAMIC PRESENTATION ENGINE & CHARTS CONTROLLER
-// Synchronized with Capex Budget 27-31 - Summary VA_06oct_1528.xlsx
-// ============================================================================
-
-// ============================================================================
 // TAB 3: PRESENTATION DECK DYNAMIC ENGINE & EXPORT SUITE (52 SLIDES)
 // 100% Synchronized with Capex Budget 27-31 - Summary VA_06oct_1528.xlsx
 // ============================================================================
@@ -6035,8 +6046,8 @@ window.exportDynamicPptx = exportDynamicPptx;
 
 
 // ============================================================================
-// TAB 3: DYNAMIC PRESENTATION CHARTS & NAVIGATION CONTROLLER
-// 100% Bound to window.PRES_DATA (No Static Numbers)
+// TAB 3: DYNAMIC PRESENTATION CHARTS & NAVIGATION CONTROLLER (ALL 52 SLIDES)
+// 100% Canvas IDs Synchronized & Dynamically Bound to window.PRES_DATA
 // ============================================================================
 
 var presChartInstances = {};
@@ -6176,18 +6187,8 @@ function initPresentationCharts() {
                     datalabels: { display: false }
                 },
                 scales: {
-                    x: { 
-                        stacked: true, 
-                        grid: { display: false }, 
-                        ticks: { font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#1e293b' },
-                        title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10.5 }, color: '#475569', padding: { top: 4 } }
-                    },
-                    y: { 
-                        stacked: true, 
-                        grid: { color: '#f1f5f9' }, 
-                        title: { display: true, text: 'Group CAPEX ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' },
-                        ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } 
-                    }
+                    x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#1e293b' }, title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10.5 }, color: '#475569', padding: { top: 4 } } },
+                    y: { stacked: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'Group CAPEX ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } }
                 }
             },
             plugins: [presWhiteBarLabelPlugin, presBarTopTotalPlugin]
@@ -6215,18 +6216,8 @@ function initPresentationCharts() {
                     datalabels: { display: false }
                 },
                 scales: {
-                    x: { 
-                        stacked: true, 
-                        grid: { display: false }, 
-                        ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' },
-                        title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } }
-                    },
-                    y: { 
-                        stacked: true, 
-                        grid: { color: '#f1f5f9' }, 
-                        title: { display: true, text: 'Agri B CAPEX ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' },
-                        ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } 
-                    }
+                    x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' }, title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } } },
+                    y: { stacked: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'Agri B CAPEX ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } }
                 }
             },
             plugins: [presWhiteBarLabelPlugin, presBarTopTotalPlugin]
@@ -6251,32 +6242,77 @@ function initPresentationCharts() {
                 maintainAspectRatio: false, animation: false,
                 indexAxis: 'y',
                 layout: { padding: { right: 70, bottom: 8 } },
-                plugins: {
-                    legend: { display: false },
-                    datalabels: { display: false }
-                },
+                plugins: { legend: { display: false }, datalabels: { display: false } },
                 scales: {
-                    x: { 
-                        grid: { color: '#f1f5f9' }, 
-                        ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial' }, color: '#475569' },
-                        title: { display: true, text: 'Budget ($M)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569' },
-                        max: 48
-                    },
-                    y: { 
-                        grid: { display: false }, 
-                        ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' },
-                        title: { display: true, text: 'Operating Unit', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }
-                    }
+                    x: { grid: { color: '#f1f5f9' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial' }, color: '#475569' }, title: { display: true, text: 'Budget ($M)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569' }, max: 48 },
+                    y: { grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' }, title: { display: true, text: 'Operating Unit', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' } }
                 }
             },
             plugins: [presBarTopTotalPlugin]
         });
     }
 
-    // SLIDE 4: M.O.B Categories
-    const c4 = document.getElementById('chartPresSlide4Split');
-    if (c4) {
-        window.presChartInstances['pres4'] = new Chart(c4, {
+    // SLIDE 3: 2027 Consolidated CAPEX Split by Operating Unit ($M)
+    const c3Split = document.getElementById('chartPresSlide4Split');
+    if (c3Split) {
+        window.presChartInstances['pres3Split'] = new Chart(c3Split, {
+            type: 'bar',
+            data: {
+                labels: ['PH Feed', 'Vietnam', 'Malaysia', 'Indonesia', 'China', 'Dia & Hol', 'PH F&N'],
+                datasets: [
+                    { label: 'Strategic Capex (CI & AE)', data: [d.ph.strat2027, d.vn.strat2027, d.my.strat2027, d.id.strat2027, d.cn.strat2027, (d.dia.strat2027 + d.hol.strat2027), d.fn.strat2027], backgroundColor: '#00543D' },
+                    { label: 'M.O.B (Envelope)', data: [d.ph.mob2027, d.vn.mob2027, d.my.mob2027, d.id.mob2027, d.cn.mob2027, (d.dia.mob2027 + d.hol.mob2027), d.fn.mob2027], backgroundColor: '#4338ca' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                layout: { padding: { top: 22, bottom: 8 } },
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10.5, weight: 'bold' }, boxWidth: 12, padding: 8 } },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' }, title: { display: true, text: 'Operating Business Units & Regions', font: { family: 'Arial', weight: 'bold', size: 10.5 }, color: '#475569', padding: { top: 4 } } },
+                    y: { stacked: true, grid: { color: '#f1f5f9' }, title: { display: true, text: '2027 CAPEX ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } }
+                }
+            },
+            plugins: [presWhiteBarLabelPlugin, presBarTopTotalPlugin]
+        });
+    }
+
+    // SLIDE 4: Maintenance of Business (M.O.B) Breakdown & Categories
+    const c4Mob = document.getElementById('chartPresSlide5Mob');
+    if (c4Mob) {
+        window.presChartInstances['pres4Mob'] = new Chart(c4Mob, {
+            type: 'bar',
+            data: {
+                labels: ['PH Feed (Prod)', 'Vietnam', 'Malaysia', 'Indonesia', 'China', 'Diasham', 'Holdco'],
+                datasets: [
+                    { label: 'Production M.O.B', data: [d.ph.prodMob, d.vn.prodMob, d.my.prodMob, d.id.prodMob, d.cn.prodMob, d.dia.prodMob, d.hol.prodMob], backgroundColor: '#4338ca' },
+                    { label: 'Production Cap', data: [d.ph.cap, d.vn.cap, d.my.cap, d.id.cap, d.cn.cap, d.dia.cap, d.hol.cap], backgroundColor: '#94a3b8' }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                layout: { padding: { top: 22, bottom: 8 } },
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12, padding: 8 } },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' }, title: { display: true, text: 'Operating Country / Entity', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } } },
+                    y: { grid: { color: '#f1f5f9' }, title: { display: true, text: 'M.O.B Budget ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } }
+                }
+            },
+            plugins: [presBarTopTotalPlugin]
+        });
+    }
+
+    const c4Cat = document.getElementById('chartPresSlide5Cat');
+    if (c4Cat) {
+        window.presChartInstances['pres4Cat'] = new Chart(c4Cat, {
             type: 'doughnut',
             data: {
                 labels: ['Sustenance (MOB1)', 'HSSE (MOB2)', 'McPESO Plan (MOB3)', 'Legal & Statutory (MOB4)'],
@@ -6299,13 +6335,43 @@ function initPresentationCharts() {
         });
     }
 
-    // SLIDE 5: Strategic S1 vs S2 & By Unit
-    const c5a = document.getElementById('chartPresSlide5a');
-    if (c5a) {
-        window.presChartInstances['pres5a'] = new Chart(c5a, {
+    // SLIDE 5: Strategic Capex S1 vs S2 & By Unit
+    const c5Strat = document.getElementById('chartPresSlide6Strat');
+    if (c5Strat) {
+        window.presChartInstances['pres5Strat'] = new Chart(c5Strat, {
+            type: 'bar',
+            data: {
+                labels: ['PH Feed', 'Malaysia', 'Vietnam', 'Indonesia', 'China'],
+                datasets: [{
+                    label: 'Strategic Capex',
+                    data: [d.ph.strat2027, d.my.strat2027, d.vn.strat2027, d.id.strat2027, d.cn.strat2027],
+                    backgroundColor: '#00543D',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                layout: { padding: { top: 22, bottom: 8 } },
+                plugins: {
+                    legend: { display: true, position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12, padding: 8 } },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#1e293b' }, title: { display: true, text: 'Operating Country / Entity', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } } },
+                    y: { grid: { color: '#f1f5f9' }, title: { display: true, text: 'Strategic Budget ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } }
+                }
+            },
+            plugins: [presBarTopTotalPlugin]
+        });
+    }
+
+    const c5S1S2 = document.getElementById('chartPresSlide6S1S2');
+    if (c5S1S2) {
+        window.presChartInstances['pres5S1S2'] = new Chart(c5S1S2, {
             type: 'doughnut',
             data: {
-                labels: ['S1 CI (Capital Investments)', 'S2 AE (Automations & Expansions)'],
+                labels: ['S1 CI (' + presFmtM(d.agrib.s1_2027) + ' - ' + d.agrib.s1_pct.toFixed(1) + '%)', 'S2 AE (' + presFmtM(d.agrib.s2_2027) + ' - ' + d.agrib.s2_pct.toFixed(1) + '%)'],
                 datasets: [{
                     data: [d.agrib.s1_2027, d.agrib.s2_2027],
                     backgroundColor: ['#00543D', '#0284c7'],
@@ -6325,36 +6391,8 @@ function initPresentationCharts() {
         });
     }
 
-    const c5b = document.getElementById('chartPresSlide5b');
-    if (c5b) {
-        window.presChartInstances['pres5b'] = new Chart(c5b, {
-            type: 'bar',
-            data: {
-                labels: ['PH Feed', 'Malaysia', 'Vietnam', 'Indonesia', 'China'],
-                datasets: [{
-                    label: 'Strategic Capex',
-                    data: [d.ph.strat2027, d.my.strat2027, d.vn.strat2027, d.id.strat2027, d.cn.strat2027],
-                    backgroundColor: '#00543D',
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false, animation: false,
-                indexAxis: 'y',
-                layout: { padding: { right: 65, bottom: 8 } },
-                plugins: { legend: { display: false }, datalabels: { display: false } },
-                scales: {
-                    x: { grid: { color: '#f1f5f9' }, ticks: { callback: v => '$' + v + 'M' } },
-                    y: { grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 } } }
-                }
-            },
-            plugins: [presBarTopTotalPlugin]
-        });
-    }
-
     // SLIDE 6: Agri B Execution Status Breakdown
-    const cStatusAgriB = document.getElementById('chartPresSlide6Status');
+    const cStatusAgriB = document.getElementById('chartPresStatus_agrib');
     if (cStatusAgriB) {
         window.presChartInstances['status_agrib'] = new Chart(cStatusAgriB, {
             type: 'doughnut',
@@ -6379,7 +6417,7 @@ function initPresentationCharts() {
         });
     }
 
-    const cStatusBarAgriB = document.getElementById('chartPresSlide6StatusBar');
+    const cStatusBarAgriB = document.getElementById('chartPresStatusBar_agrib');
     if (cStatusBarAgriB) {
         window.presChartInstances['statusbar_agrib'] = new Chart(cStatusBarAgriB, {
             type: 'bar',
@@ -6407,7 +6445,7 @@ function initPresentationCharts() {
         });
     }
 
-    // ALL 8 OPERATING UNITS: REUSABLE CHART FACTORY
+    // ALL 8 OPERATING UNITS: REUSABLE CHART FACTORY (Slides 7 to 46)
     function setupCountryCharts(key) {
         const cData = d[key];
         if (!cData) return;
@@ -6433,18 +6471,8 @@ function initPresentationCharts() {
                         datalabels: { display: false }
                     },
                     scales: {
-                        x: { 
-                            stacked: true, 
-                            grid: { display: false }, 
-                            ticks: { font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#1e293b' },
-                            title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } }
-                        },
-                        y: { 
-                            stacked: true, 
-                            grid: { color: '#f1f5f9' }, 
-                            title: { display: true, text: (key === 'hol' ? 'Capex ($K)' : 'Capex ($M)'), font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' },
-                            ticks: { callback: v => (key === 'hol' ? '$' + (v * 1000) + 'K' : '$' + v + 'M'), font: { family: 'Arial', size: 9 }, color: '#475569' } 
-                        }
+                        x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#1e293b' }, title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } } },
+                        y: { stacked: true, grid: { color: '#f1f5f9' }, title: { display: true, text: (key === 'hol' ? 'Capex ($K)' : 'Capex ($M)'), font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => (key === 'hol' ? '$' + (v * 1000) + 'K' : '$' + v + 'M'), font: { family: 'Arial', size: 9 }, color: '#475569' } }
                     }
                 },
                 plugins: [presWhiteBarLabelPlugin, presBarTopTotalPlugin]
@@ -6457,7 +6485,7 @@ function initPresentationCharts() {
             window.presChartInstances['strat_' + key] = new Chart(elStrat, {
                 type: 'doughnut',
                 data: {
-                    labels: ['S1 CI (' + presFmtM(cData.s1_2027) + ' ' + cData.s1_pct.toFixed(1) + '%)', 'S2 AE (' + presFmtM(cData.s2_2027) + ' ' + cData.s2_pct.toFixed(1) + '%)'],
+                    labels: ['S1 CI (' + presFmtM(cData.s1_2027) + ' - ' + cData.s1_pct.toFixed(1) + '%)', 'S2 AE (' + presFmtM(cData.s2_2027) + ' - ' + cData.s2_pct.toFixed(1) + '%)'],
                     datasets: [{
                         data: [cData.s1_2027, cData.s2_2027],
                         backgroundColor: ['#00543D', '#0284c7'],
@@ -6561,8 +6589,8 @@ function initPresentationCharts() {
             });
         }
 
-        // Slide D: Priority P0-P3
-        const elPri = document.getElementById('chartPresPri_' + key);
+        // Slide D: Priority P0-P3 (Handles both 'chartPresPriority_' and 'chartPresPri_')
+        const elPri = document.getElementById('chartPresPriority_' + key) || document.getElementById('chartPresPri_' + key);
         if (elPri) {
             window.presChartInstances['pri_' + key] = new Chart(elPri, {
                 type: 'doughnut',
@@ -6673,16 +6701,16 @@ function initPresentationCharts() {
     // Initialize all 8 entities
     ['ph', 'vn', 'my', 'id', 'cn', 'dia', 'hol', 'fn'].forEach(setupCountryCharts);
 
-    // SLIDE 50: Disbursement Phasing Q1-Q4
-    const c50 = document.getElementById('chartPresSlide50');
-    if (c50) {
-        window.presChartInstances['pres50'] = new Chart(c50, {
+    // SLIDE 47: 5-Year Strategic Roadmap Multi-Year Trajectory
+    const c47 = document.getElementById('chartPresSlide47Roadmap') || document.getElementById('chartPresSlide47');
+    if (c47) {
+        window.presChartInstances['pres47'] = new Chart(c47, {
             type: 'bar',
             data: {
-                labels: ['Q1 2027', 'Q2 2027', 'Q3 2027', 'Q4 2027'],
+                labels: d.agrib.multiYear.years,
                 datasets: [
-                    { label: 'Strategic Capex', data: [d.agrib.phasing.strat.q1, d.agrib.phasing.strat.q2, d.agrib.phasing.strat.q3, d.agrib.phasing.strat.q4], backgroundColor: '#00543D' },
-                    { label: 'M.O.B Envelope', data: [d.agrib.phasing.mob.q1, d.agrib.phasing.mob.q2, d.agrib.phasing.mob.q3, d.agrib.phasing.mob.q4], backgroundColor: '#4338ca' }
+                    { label: 'Strategic Capex', data: d.agrib.multiYear.strat, backgroundColor: '#00543D', borderRadius: 4 },
+                    { label: 'M.O.B Envelope', data: d.agrib.multiYear.mob, backgroundColor: '#4338ca', borderRadius: 4 }
                 ]
             },
             options: {
@@ -6690,15 +6718,180 @@ function initPresentationCharts() {
                 maintainAspectRatio: false, animation: false,
                 layout: { padding: { top: 22, bottom: 8 } },
                 plugins: {
-                    legend: { position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10.5, weight: 'bold' }, boxWidth: 12, padding: 8 } },
+                    legend: { position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12, padding: 8 } },
                     datalabels: { display: false }
                 },
                 scales: {
-                    x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 10 } } },
-                    y: { stacked: true, grid: { color: '#f1f5f9' }, ticks: { callback: v => '$' + v + 'M' } }
+                    x: { stacked: true, grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 10 } }, title: { display: true, text: 'Planning Year (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } } },
+                    y: { stacked: true, grid: { color: '#f1f5f9' }, title: { display: true, text: 'Agri B CAPEX ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M' } }
                 }
             },
             plugins: [presWhiteBarLabelPlugin, presBarTopTotalPlugin]
+        });
+    }
+
+    // SLIDE 48: Risk Governance & Allocation
+    const c48 = document.getElementById('chartPresSlide48Risk') || document.getElementById('chartPresSlide48');
+    if (c48) {
+        window.presChartInstances['pres48'] = new Chart(c48, {
+            type: 'doughnut',
+            data: {
+                labels: ['Environmental & HSSE ($1.24M)', 'Legal & Compliance ($0.94M)', 'Production Sustenance ($6.16M)', 'McPESO Efficiency ($1.97M)'],
+                datasets: [{
+                    data: [d.agrib.mob2_2027, d.agrib.mob4_2027, d.agrib.mob1_2027, d.agrib.mob3_2027],
+                    backgroundColor: ['#d97706', '#7c3aed', '#00543D', '#0284c7'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, padding: 8 } },
+                    datalabels: { display: false }
+                }
+            },
+            plugins: [presWhitePieLabelPlugin]
+        });
+    }
+
+    // SLIDE 49: Financial Governance & M.O.B Discipline
+    const c49 = document.getElementById('chartPresSlide49Cap') || document.getElementById('chartPresSlide49');
+    if (c49) {
+        window.presChartInstances['pres49'] = new Chart(c49, {
+            type: 'bar',
+            data: {
+                labels: ['PH Feed', 'Vietnam', 'Malaysia', 'Indonesia', 'China', 'Diasham', 'Holdco'],
+                datasets: [
+                    { label: 'Production M.O.B', data: [d.ph.prodMob, d.vn.prodMob, d.my.prodMob, d.id.prodMob, d.cn.prodMob, d.dia.prodMob, d.hol.prodMob], backgroundColor: '#4338ca', borderRadius: 4 },
+                    { label: 'Production Cap', data: [d.ph.cap, d.vn.cap, d.my.cap, d.id.cap, d.cn.cap, d.dia.cap, d.hol.cap], backgroundColor: '#94a3b8', borderRadius: 4 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                layout: { padding: { top: 22, bottom: 8 } },
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12, padding: 8 } },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 9.5 } } },
+                    y: { grid: { color: '#f1f5f9' }, title: { display: true, text: 'M.O.B Discipline ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 } }, ticks: { callback: v => '$' + v.toFixed(2) + 'M' } }
+                }
+            },
+            plugins: [presBarTopTotalPlugin]
+        });
+    }
+
+    // SLIDE 50: 2027 Quarterly Cashflow Phasing Q1-Q4
+    const c50 = document.getElementById('chartPresSlide50Phasing') || document.getElementById('chartPresSlide50');
+    if (c50) {
+        window.presChartInstances['pres50'] = new Chart(c50, {
+            type: 'doughnut',
+            data: {
+                labels: ['Q1: Downpayments ($20.21M)', 'Q2: Construction ($22.63M)', 'Q3: Machinery Installation ($12.40M)', 'Q4: Commissioning ($9.04M)'],
+                datasets: [{
+                    data: [d.agrib.phasing.q1, d.agrib.phasing.q2, d.agrib.phasing.q3, d.agrib.phasing.q4],
+                    backgroundColor: ['#0284c7', '#00543D', '#d97706', '#64748b'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#0f172a', font: { family: 'Arial', size: 9.5, weight: 'bold' }, padding: 8 } },
+                    datalabels: { display: false }
+                }
+            },
+            plugins: [presWhitePieLabelPlugin]
+        });
+    }
+
+    // SLIDE 51: 5-Year Cumulative Investment Trajectory
+    const c51 = document.getElementById('chartPresSlide51Growth') || document.getElementById('chartPresSlide51');
+    if (c51) {
+        const annualData = d.agrib.multiYear.total;
+        let cumulative = 0;
+        const cumData = annualData.map(v => {
+            cumulative += v;
+            return Number(cumulative.toFixed(2));
+        });
+
+        window.presChartInstances['pres51'] = new Chart(c51, {
+            type: 'bar',
+            data: {
+                labels: d.agrib.multiYear.years,
+                datasets: [
+                    { 
+                        type: 'line',
+                        label: 'Cumulative CAPEX ($M)', 
+                        data: cumData, 
+                        borderColor: '#0284c7', 
+                        backgroundColor: 'rgba(2, 132, 199, 0.1)', 
+                        borderWidth: 2.5,
+                        fill: true, 
+                        tension: 0.25, 
+                        pointRadius: 5, 
+                        pointBackgroundColor: '#0284c7', 
+                        pointBorderColor: '#ffffff',
+                        pointBorderWidth: 2,
+                        yAxisID: 'y1'
+                    },
+                    { 
+                        type: 'bar',
+                        label: 'Annual Plan ($M)', 
+                        data: annualData, 
+                        backgroundColor: '#00543D', 
+                        borderRadius: 4,
+                        yAxisID: 'y'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                layout: { padding: { top: 22, bottom: 8 } },
+                plugins: {
+                    legend: { position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12, padding: 8 } },
+                    datalabels: { display: false }
+                },
+                scales: {
+                    x: { grid: { display: false }, ticks: { font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#1e293b' }, title: { display: true, text: 'Planning Horizon (2027 - 2031)', font: { family: 'Arial', weight: 'bold', size: 10 }, color: '#475569', padding: { top: 4 } } },
+                    y: { grid: { color: '#f1f5f9' }, position: 'left', title: { display: true, text: 'Annual ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#475569' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#475569' } },
+                    y1: { position: 'right', grid: { display: false }, title: { display: true, text: 'Cumulative ($M)', font: { family: 'Arial', weight: 'bold', size: 9.5 }, color: '#0284c7' }, ticks: { callback: v => '$' + v + 'M', font: { family: 'Arial', size: 9 }, color: '#0284c7' } }
+                }
+            },
+            plugins: [presBarTopTotalPlugin]
+        });
+    }
+
+    // SLIDE 52: 2027 Capital Allocation Breakdown
+    const c52 = document.getElementById('chartPresSlide52Pie') || document.getElementById('chartPresSlide52');
+    if (c52) {
+        window.presChartInstances['pres52'] = new Chart(c52, {
+            type: 'doughnut',
+            data: {
+                labels: ['Strategic: CI & AE (' + presFmtM(d.agrib.strat2027) + ' - ' + ((d.agrib.strat2027 / d.agrib.total2027) * 100).toFixed(1) + '%)', 'M.O.B Envelope (' + presFmtM(d.agrib.mob2027) + ' - ' + ((d.agrib.mob2027 / d.agrib.total2027) * 100).toFixed(1) + '%)'],
+                datasets: [{
+                    data: [d.agrib.strat2027, d.agrib.mob2027],
+                    backgroundColor: ['#00543D', '#4338ca'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, animation: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: '#0f172a', font: { family: 'Arial', size: 9.5, weight: 'bold' }, padding: 8 } },
+                    datalabels: { display: false }
+                }
+            },
+            plugins: [presWhitePieLabelPlugin]
         });
     }
 }
@@ -6756,7 +6949,7 @@ function jumpToSlide(n) {
 }
 
 function togglePresFullscreen() {
-    const el = document.getElementById('presentationPage');
+    const el = document.getElementById('pagePresentationDeck');
     if (!el) return;
     if (!document.fullscreenElement) {
         el.requestFullscreen().catch(err => {
@@ -6769,8 +6962,8 @@ function togglePresFullscreen() {
 
 // Global presentation keyboard listener
 document.addEventListener('keydown', function(e) {
-    const presPage = document.getElementById('presentationPage');
-    if (!presPage || presPage.style.display === 'none') return;
+    const presPage = document.getElementById('pagePresentationDeck');
+    if (!presPage || presPage.classList.contains('hidden') || presPage.style.display === 'none') return;
 
     if (e.key === 'ArrowRight' || e.key === 'PageDown') {
         e.preventDefault();
@@ -6789,7 +6982,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 
-</script>
+        </script>
 </body>
 </html>
 
