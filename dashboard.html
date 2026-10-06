@@ -3904,7 +3904,7 @@ var presChartInstances = {};
         }
 
                 // Tự động nhận diện và định dạng ngày cập nhật dữ liệu web
-        window.DATA_UPDATED_DATE = "05-Oct-2026";
+        window.DATA_UPDATED_DATE = "06-Oct-2026";
 
         function getUpdateDateString() {
             if (window.DATA_UPDATED_DATE && window.DATA_UPDATED_DATE.trim() !== "") {
@@ -5548,7 +5548,7 @@ function initPresentationCharts() {
                 datasets: [{
                     label: 'Capex Readiness',
                     data: [2.60, 8.02, 14.95, 10.45, 2.50],
-                    backgroundColor: ['#10b981', '#10b981', '#f59e0b', '#94a3b8', '#8b5cf6'],
+                    backgroundColor: ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'],
                     borderRadius: 6
                 }]
             },
@@ -5562,10 +5562,26 @@ function initPresentationCharts() {
                     legend: {
                         display: true,
                         position: 'top',
+                        onClick: function() {},
                         labels: {
                             color: '#0f172a',
                             font: { family: 'Arial', size: 10, weight: 'bold' },
-                            boxWidth: 12
+                            boxWidth: 12,
+                            padding: 10,
+                            generateLabels: function(chart) {
+                                var lbls = ['Used', 'Engaged', 'Pending', 'Cancelled', 'Carryover'];
+                                var clrs = ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'];
+                                return lbls.map(function(text, i) {
+                                    return {
+                                        text: text,
+                                        fillStyle: clrs[i],
+                                        strokeStyle: clrs[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
                         }
                     },
                     datalabels: { display: false }
@@ -5778,7 +5794,31 @@ function initPresentationCharts() {
                     indexAxis: 'y',
                     layout: { padding: { right: 85, bottom: 8 } },
                     plugins: {
-                        legend: { display: true, position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12 } },
+                        legend: {
+                        display: true,
+                        position: 'top',
+                        onClick: function() {},
+                        labels: {
+                            color: '#0f172a',
+                            font: { family: 'Arial', size: 10, weight: 'bold' },
+                            boxWidth: 12,
+                            padding: 10,
+                            generateLabels: function(chart) {
+                                var lbls = ['Used', 'Engaged', 'Pending', 'Cancelled', 'Carryover'];
+                                var clrs = ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'];
+                                return lbls.map(function(text, i) {
+                                    return {
+                                        text: text,
+                                        fillStyle: clrs[i],
+                                        strokeStyle: clrs[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
                         datalabels: { display: false }
                     },
                     scales: {
@@ -5843,7 +5883,31 @@ function initPresentationCharts() {
                     maintainAspectRatio: false, animation: false,
                     layout: { padding: { top: 22, bottom: 8 } },
                     plugins: {
-                        legend: { display: true, position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12 } },
+                        legend: {
+                        display: true,
+                        position: 'top',
+                        onClick: function() {},
+                        labels: {
+                            color: '#0f172a',
+                            font: { family: 'Arial', size: 10, weight: 'bold' },
+                            boxWidth: 12,
+                            padding: 10,
+                            generateLabels: function(chart) {
+                                var lbls = ['Used', 'Engaged', 'Pending', 'Cancelled', 'Carryover'];
+                                var clrs = ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'];
+                                return lbls.map(function(text, i) {
+                                    return {
+                                        text: text,
+                                        fillStyle: clrs[i],
+                                        strokeStyle: clrs[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
                         datalabels: { display: false }
                     },
                     scales: {
@@ -5907,7 +5971,31 @@ function initPresentationCharts() {
                     maintainAspectRatio: false, animation: false,
                     layout: { padding: { top: 22, bottom: 8 } },
                     plugins: {
-                        legend: { display: true, position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12 } },
+                        legend: {
+                        display: true,
+                        position: 'top',
+                        onClick: function() {},
+                        labels: {
+                            color: '#0f172a',
+                            font: { family: 'Arial', size: 10, weight: 'bold' },
+                            boxWidth: 12,
+                            padding: 10,
+                            generateLabels: function(chart) {
+                                var lbls = ['Used', 'Engaged', 'Pending', 'Cancelled', 'Carryover'];
+                                var clrs = ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'];
+                                return lbls.map(function(text, i) {
+                                    return {
+                                        text: text,
+                                        fillStyle: clrs[i],
+                                        strokeStyle: clrs[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
                         datalabels: { display: false }
                     },
                     scales: {
@@ -5956,8 +6044,10 @@ function initPresentationCharts() {
         const elStatusBar = document.getElementById('chartPresStatusBar_' + key);
         if (elStatusBar) {
             const statusColors = statusLabels.map(l => {
-                if (l.indexOf('Used') >= 0 || l.indexOf('Engaged') >= 0) return '#10b981';
+                if (l.indexOf('Used') >= 0) return '#10b981';
+                if (l.indexOf('Engaged') >= 0) return '#0284c7';
                 if (l.indexOf('Pending') >= 0) return '#f59e0b';
+                if (l.indexOf('Cancelled') >= 0) return '#dc2626';
                 if (l.indexOf('Carryover') >= 0) return '#8b5cf6';
                 return '#94a3b8';
             });
@@ -5980,7 +6070,31 @@ function initPresentationCharts() {
                     indexAxis: 'y',
                     layout: { padding: { right: 85, bottom: 8 } },
                     plugins: {
-                        legend: { display: true, position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12 } },
+                        legend: {
+                        display: true,
+                        position: 'top',
+                        onClick: function() {},
+                        labels: {
+                            color: '#0f172a',
+                            font: { family: 'Arial', size: 10, weight: 'bold' },
+                            boxWidth: 12,
+                            padding: 10,
+                            generateLabels: function(chart) {
+                                var lbls = ['Used', 'Engaged', 'Pending', 'Cancelled', 'Carryover'];
+                                var clrs = ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'];
+                                return lbls.map(function(text, i) {
+                                    return {
+                                        text: text,
+                                        fillStyle: clrs[i],
+                                        strokeStyle: clrs[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
                         datalabels: { display: false }
                     },
                     scales: {
@@ -6158,7 +6272,31 @@ function initPresentationCharts() {
                 indexAxis: 'y',
                 layout: { padding: { right: 85, bottom: 8 } },
                 plugins: {
-                    legend: { display: true, position: 'top', labels: { color: '#0f172a', font: { family: 'Arial', size: 10, weight: 'bold' }, boxWidth: 12 } },
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        onClick: function() {},
+                        labels: {
+                            color: '#0f172a',
+                            font: { family: 'Arial', size: 10, weight: 'bold' },
+                            boxWidth: 12,
+                            padding: 10,
+                            generateLabels: function(chart) {
+                                var lbls = ['Used', 'Engaged', 'Pending', 'Cancelled', 'Carryover'];
+                                var clrs = ['#10b981', '#0284c7', '#f59e0b', '#dc2626', '#8b5cf6'];
+                                return lbls.map(function(text, i) {
+                                    return {
+                                        text: text,
+                                        fillStyle: clrs[i],
+                                        strokeStyle: clrs[i],
+                                        lineWidth: 0,
+                                        hidden: false,
+                                        index: i
+                                    };
+                                });
+                            }
+                        }
+                    },
                     datalabels: { display: false }
                 },
                 scales: {
