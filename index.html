@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5692,7 +5692,7 @@ window.PRES_DATA = {
             years: ['2027', '2028', '2029', '2030', '2031'],
             strat: [0.00, 2.36, 0.16, 0.00, 0.00],
             mob: [0.25, 0.27, 0.04, 0.04, 0.00],
-            total: [0.25, 0.16, 0.04, 3.13, 0.00]
+            total: [0.25, 2.63, 0.20, 0.04, 0.00]
         },
         stratProjects: [
             { name: 'Premix Blending Line 2 [S1]', code: 'S1', amount: 0.00 },
@@ -6895,6 +6895,7 @@ function initPresentationCharts() {
         });
     }
 }
+window.updatePresentationCharts = initPresentationCharts;
 
 // SLIDE NAVIGATION CONTROLLER & KEYBOARD BINDINGS
 let currentPresSlide = 1;
@@ -6923,17 +6924,31 @@ function showPresSlide(n) {
         updatePresentationDynamicData();
     }
 
-    // Resize active charts
-    setTimeout(() => {
-        if (window.presChartInstances) {
-            Object.keys(window.presChartInstances).forEach(k => {
-                const chart = window.presChartInstances[k];
-                if (chart && chart.canvas && chart.canvas.offsetParent !== null) {
-                    chart.resize();
+    // Resize & update active charts for crisp rendering
+    function refreshActiveSlideCharts() {
+        const activeSlide = document.getElementById('presSlide' + currentPresSlide);
+        if (activeSlide) {
+            const canvases = activeSlide.querySelectorAll('canvas');
+            canvases.forEach(function(cv) {
+                let chart = (typeof Chart !== 'undefined' && Chart.getChart) ? Chart.getChart(cv) : null;
+                if (!chart && window.presChartInstances) {
+                    Object.keys(window.presChartInstances).forEach(function(k) {
+                        if (window.presChartInstances[k] && window.presChartInstances[k].canvas === cv) {
+                            chart = window.presChartInstances[k];
+                        }
+                    });
+                }
+                if (chart) {
+                    try {
+                        chart.resize();
+                        chart.update('none');
+                    } catch(err) {}
                 }
             });
         }
-    }, 60);
+    }
+    setTimeout(refreshActiveSlideCharts, 20);
+    setTimeout(refreshActiveSlideCharts, 120);
 }
 
 function nextPresSlide() {
