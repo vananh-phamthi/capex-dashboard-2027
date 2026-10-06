@@ -9,7 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="chart.min.js"></script>
+    <script>
+        if (typeof Chart === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');
+        }
+    </script>
     <script src="chartjs-plugin-datalabels.min.js"></script>
+    <script>
+        if (typeof ChartDataLabels === 'undefined') {
+            document.write('<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"><\/script>');
+        }
+    </script>
+    <script>
+        (function() {
+            const SECRET_KEY = "capex2027";
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlKey = urlParams.get('key');
+            const sessionAuth = sessionStorage.getItem('capex_authenticated');
+            if ((!urlKey || urlKey.trim().toLowerCase() !== SECRET_KEY.toLowerCase()) && sessionAuth !== 'true') {
+                document.documentElement.classList.add('capex-locked');
+            }
+        })();
+    </script>
+    <style>
+        html.capex-locked .dashboard-container {
+            display: none !important;
+        }
+    </style>
+
 <style>
         :root {
             --bg-main: #f8fafc;
@@ -851,6 +878,87 @@
     </style>
 </head>
 <body>
+
+    <!-- CORPORATE LOCK SCREEN OVERLAY -->
+    <div id="corporateLockScreen" style="display: none; position: fixed; inset: 0; z-index: 9999999; background: linear-gradient(135deg, #f0fdf4 0%, #f8fafc 100%); align-items: center; justify-content: center; padding: 20px;">
+        <div style="max-width: 520px; width: 100%; margin: 0 auto; padding: 2.2rem 2.5rem; background: #ffffff; border-radius: 16px; box-shadow: 0 10px 30px rgba(0, 84, 61, 0.08), 0 2px 6px rgba(0,0,0,0.04); border-top: 5px solid #00543D; text-align: center; font-family: 'Plus Jakarta Sans', system-ui, sans-serif;">
+            <div style="font-size: 3rem; margin-bottom: 0.8rem;">🔒</div>
+            <div style="font-size: 1.45rem; font-weight: 700; color: #00543D; margin-bottom: 0.4rem;">Aboitiz Foods &mdash; Agri B Group</div>
+            <div style="font-size: 0.95rem; color: #4b5563; margin-bottom: 1.2rem; line-height: 1.5;">CAPEX Budget 2027 &amp; Business Plan (2027&ndash;2031)<br><strong>Báo cáo Nội bộ &mdash; Giới hạn truy cập</strong></div>
+            <div style="font-size: 0.88rem; color: #64748b; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 0.85rem; line-height: 1.45; text-align: left; margin-bottom: 1.5rem;">
+                ℹ️ <strong>Thông báo bảo mật:</strong> Dữ liệu tài chính và kế hoạch kinh doanh được giới hạn lưu hành nội bộ. Nếu bạn chưa có quyền truy cập, vui lòng liên hệ <strong>Quản trị viên (Người tạo báo cáo)</strong> để được cấp mật mã phê duyệt.
+            </div>
+            <div style="text-align: left; margin-bottom: 1.2rem;">
+                <label for="lockPasswordInput" style="display: block; font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 0.4rem;">Mật mã truy cập:</label>
+                <input id="lockPasswordInput" type="password" placeholder="Nhập mã được cấp để mở báo cáo..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; outline: none; transition: border-color 0.2s;" onkeydown="if(event.key==='Enter') verifyAccessKey();" />
+                <div id="lockErrorMsg" style="display: none; color: #dc2626; font-size: 0.85rem; margin-top: 0.5rem; text-align: left;">❌ Mật mã không chính xác. Vui lòng liên hệ Quản trị viên để nhận mã phê duyệt.</div>
+            </div>
+            <button id="lockUnlockBtn" onclick="verifyAccessKey()" style="width: 100%; padding: 0.85rem 1.2rem; background: #00543D; color: #ffffff; border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: background-color 0.2s; box-shadow: 0 4px 12px rgba(0, 84, 61, 0.2);">🔓 Mở Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        (function checkAccessAuth() {
+            const SECRET_KEY = "capex2027";
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlKey = urlParams.get('key');
+            const sessionAuth = sessionStorage.getItem('capex_authenticated');
+
+            let isAuth = false;
+            if (urlKey && urlKey.trim().toLowerCase() === SECRET_KEY.toLowerCase()) {
+                isAuth = true;
+                sessionStorage.setItem('capex_authenticated', 'true');
+            } else if (sessionAuth === 'true') {
+                isAuth = true;
+            }
+
+            window.IS_AUTHENTICATED = isAuth;
+
+            function applyLockState() {
+                const lockEl = document.getElementById('corporateLockScreen');
+                if (window.IS_AUTHENTICATED) {
+                    if (lockEl) lockEl.style.display = 'none';
+                    document.documentElement.classList.remove('capex-locked');
+                } else {
+                    if (lockEl) lockEl.style.display = 'flex';
+                    const passInput = document.getElementById('lockPasswordInput');
+                    if (passInput) passInput.focus();
+                }
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', applyLockState);
+            } else {
+                applyLockState();
+            }
+        })();
+
+        function verifyAccessKey() {
+            const SECRET_KEY = "capex2027";
+            const passInput = document.getElementById('lockPasswordInput');
+            const errEl = document.getElementById('lockErrorMsg');
+            const lockEl = document.getElementById('corporateLockScreen');
+            if (!passInput) return;
+
+            if (passInput.value.trim().toLowerCase() === SECRET_KEY.toLowerCase()) {
+                sessionStorage.setItem('capex_authenticated', 'true');
+                window.IS_AUTHENTICATED = true;
+                document.documentElement.classList.remove('capex-locked');
+                if (lockEl) {
+                    lockEl.style.opacity = '0';
+                    lockEl.style.transition = 'opacity 0.25s ease';
+                    setTimeout(() => {
+                        lockEl.style.display = 'none';
+                    }, 250);
+                }
+            } else {
+                if (errEl) errEl.style.display = 'block';
+                passInput.style.borderColor = '#dc2626';
+                passInput.focus();
+            }
+        }
+    </script>
+
 
     <div class="dashboard-container">
         <!-- HEADER -->

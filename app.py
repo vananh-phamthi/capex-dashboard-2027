@@ -36,10 +36,17 @@ if "authenticated" not in st.session_state:
 if url_key.lower() == SECRET_KEY.lower():
     st.session_state.authenticated = True
 
+DASHBOARD_URL = "https://vananh-phamthi.github.io/capex-dashboard-2027/?key=capex2027"
+
 @st.cache_data
 def load_html():
     p = Path(__file__).parent / "dashboard.html"
-    return p.read_text(encoding="utf-8")
+    if p.exists():
+        return p.read_text(encoding="utf-8")
+    p_idx = Path(__file__).parent / "index.html"
+    if p_idx.exists():
+        return p_idx.read_text(encoding="utf-8")
+    return ""
 
 if st.session_state.authenticated:
     # Hide Streamlit menu for clean executive presentation
@@ -53,10 +60,13 @@ if st.session_state.authenticated:
         unsafe_allow_html=True,
     )
     try:
-        html_content = load_html()
-        components.html(html_content, height=2600, scrolling=True)
+        components.iframe(DASHBOARD_URL, height=2600, scrolling=True)
     except Exception as e:
-        st.error(f"Error loading dashboard: {e}")
+        try:
+            html_content = load_html()
+            components.html(html_content, height=2600, scrolling=True)
+        except Exception as inner_e:
+            st.error(f"Error loading dashboard: {e} / {inner_e}")
 else:
     # Professional Corporate Lock Screen for unauthorized viewers
     st.markdown(
